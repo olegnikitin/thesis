@@ -1,6 +1,7 @@
 package com.edu.thesis.dao.groupDao;
 
 import com.edu.thesis.domain.Group;
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,6 +14,8 @@ import java.util.List;
  */
 @Repository
 public class GroupDaoImpl implements GroupDao {
+
+    private static final Logger log = Logger.getLogger(GroupDaoImpl.class);
 
     @Autowired
     private SessionFactory sessionFactory;

@@ -10,7 +10,7 @@
     <body>
         <h1>Hello World!</h1>
         <p>This is the homepage!</p>
-        <a href="test_add">Add</a>
+        <a href="test_add">Add</a><br/>
         <a href="test_edit">Edit</a>
     </body>
 </html>

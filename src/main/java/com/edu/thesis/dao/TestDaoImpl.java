@@ -1,6 +1,7 @@
 package com.edu.thesis.dao;
 
 import com.edu.thesis.domain.Test;
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,6 +15,8 @@ import java.util.List;
  */
 @Repository
 public class TestDaoImpl implements TestDao{
+
+    private static final Logger log = Logger.getLogger(TestDaoImpl.class);
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -33,6 +36,7 @@ public class TestDaoImpl implements TestDao{
     @Override
     @Transactional
     public void addTest(Test test) {
+        log.info(test.toString());
         sessionFactory.getCurrentSession().save(test);
     }
 

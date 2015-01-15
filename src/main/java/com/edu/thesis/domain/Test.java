@@ -45,4 +45,13 @@ public class Test implements Serializable{
     public void setCol2(String col2) {
         this.col2 = col2;
     }
+
+    @Override
+    public String toString() {
+        return "Test{" +
+                "id=" + id +
+                ", col1='" + col1 + '\'' +
+                ", col2='" + col2 + '\'' +
+                '}';
+    }
 }

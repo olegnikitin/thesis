@@ -9,7 +9,7 @@
 		</layout>
 	</appender>
 
-	<logger name="com.yourcompany.test" additivity="false">
+	<logger name="com.edu.thesis" additivity="false">
 		<level value ="debug" />
 		<appender-ref ref="console" />
 	</logger>

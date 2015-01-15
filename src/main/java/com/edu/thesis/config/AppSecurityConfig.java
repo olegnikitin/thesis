@@ -2,23 +2,33 @@ package com.edu.thesis.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+import javax.sql.DataSource;
+
 
 /**
  * Created by Oleg on 15.01.2015.
  */
 @Configuration
 @EnableWebSecurity
-public class AppSecurityConfig extends WebSecurityConfigurerAdapter {//TODO: Write normally
+@Import(DBConfiguration.class)
+public class AppSecurityConfig extends WebSecurityConfigurerAdapter {//TODO: Write. Everything is wrong
+//http://stoflru.org/questions/25388855/spring-security-with-database-authorization-with-java-configuration
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
-        auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
-        auth.inMemoryAuthentication().withUser("superadmin").password("superadmin").roles("SUPERADMIN");
+    private DataSource dataSource;
+
+    @Autowired
+    public void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+        auth.jdbcAuthentication()
+                .dataSource(dataSource).usersByUsernameQuery("select login, password " +
+                "from user_of_the_group " +
+                "where login=?");
     }
 
     @Override
