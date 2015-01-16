@@ -1,5 +1,6 @@
 package com.edu.thesis.domain;
 
+import com.edu.thesis.domain.enums.StatusOfTheTask;
 import com.edu.thesis.domain.enums.TypeOfError;
 
 import javax.persistence.*;
@@ -20,6 +21,15 @@ public class Issue implements Serializable{
     private Long id;
 
     @Column
+    private String nameOfIssue;
+
+    @Column
+    private String description;
+
+    @Column
+    private String criticality;
+
+    @Column
     private Date dateOfCreation;
 
     @Column
@@ -27,13 +37,12 @@ public class Issue implements Serializable{
     private TypeOfError typeOfError;
 
     @Column
-    private String criticality;
+    @Enumerated(EnumType.STRING)
+    private StatusOfTheTask statusOfTheTask;
 
-    @Column(name = "conditionOfTheTask")
-    private String condition;
-
-    @Column
-    private String description;
+    @ManyToOne
+    @JoinColumn(name = "project_fk")
+    private Project projectOfTheIssue;
 
     @OneToMany(mappedBy = "issue")
     private Set<StoragedFile> screenshots;
@@ -46,6 +55,30 @@ public class Issue implements Serializable{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNameOfIssue() {
+        return nameOfIssue;
+    }
+
+    public void setNameOfIssue(String nameOfIssue) {
+        this.nameOfIssue = nameOfIssue;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCriticality() {
+        return criticality;
+    }
+
+    public void setCriticality(String criticality) {
+        this.criticality = criticality;
     }
 
     public Date getDateOfCreation() {
@@ -64,28 +97,20 @@ public class Issue implements Serializable{
         this.typeOfError = typeOfError;
     }
 
-    public String getCriticality() {
-        return criticality;
+    public StatusOfTheTask getStatusOfTheTask() {
+        return statusOfTheTask;
     }
 
-    public void setCriticality(String criticality) {
-        this.criticality = criticality;
+    public void setStatusOfTheTask(StatusOfTheTask statusOfTheTask) {
+        this.statusOfTheTask = statusOfTheTask;
     }
 
-    public String getCondition() {
-        return condition;
+    public Project getProjectOfTheIssue() {
+        return projectOfTheIssue;
     }
 
-    public void setCondition(String condition) {
-        this.condition = condition;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setProjectOfTheIssue(Project projectOfTheIssue) {
+        this.projectOfTheIssue = projectOfTheIssue;
     }
 
     public Set<StoragedFile> getScreenshots() {
@@ -94,46 +119,5 @@ public class Issue implements Serializable{
 
     public void setScreenshots(Set<StoragedFile> screenshots) {
         this.screenshots = screenshots;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Issue issue = (Issue) o;
-
-        if (condition != null ? !condition.equals(issue.condition) : issue.condition != null) return false;
-        if (criticality != null ? !criticality.equals(issue.criticality) : issue.criticality != null) return false;
-        if (dateOfCreation != null ? !dateOfCreation.equals(issue.dateOfCreation) : issue.dateOfCreation != null)
-            return false;
-        if (description != null ? !description.equals(issue.description) : issue.description != null) return false;
-        if (screenshots != null ? !screenshots.equals(issue.screenshots) : issue.screenshots != null) return false;
-        if (typeOfError != issue.typeOfError) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = dateOfCreation != null ? dateOfCreation.hashCode() : 0;
-        result = 31 * result + (typeOfError != null ? typeOfError.hashCode() : 0);
-        result = 31 * result + (criticality != null ? criticality.hashCode() : 0);
-        result = 31 * result + (condition != null ? condition.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (screenshots != null ? screenshots.hashCode() : 0);
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Issue{" +
-                "dateOfCreation=" + dateOfCreation +
-                ", typeOfError=" + typeOfError +
-                ", criticality='" + criticality + '\'' +
-                ", condition='" + condition + '\'' +
-                ", description='" + description + '\'' +
-                ", screenshots=" + screenshots +
-                '}';
     }
 }

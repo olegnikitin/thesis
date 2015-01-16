@@ -18,7 +18,7 @@ public class ListOfBugsPageController {
     @Autowired
     private IssueService issueService;
 
-    @RequestMapping(value = "/list_of_bugs", method = RequestMethod.GET)
+    @RequestMapping(value = "/list_of_bugs", method = RequestMethod.GET)//TODO: Write final code for view
     public String getMethodToGetListOfBugsPage(Map<String, Object> map){
         map.put("issue", new Issue());
         map.put("issueList", issueService.listOfIssues());

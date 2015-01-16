@@ -6,9 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
-<head>
-    <title>List Of bugs</title>
+<head lang="en">
+  <meta charset="UTF-8">
   <style><%@include file="../../resources/style.css" %></style>
 </head>
 <body>
