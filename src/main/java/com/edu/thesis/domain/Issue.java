@@ -95,4 +95,45 @@ public class Issue implements Serializable{
     public void setScreenshots(Set<StoragedFile> screenshots) {
         this.screenshots = screenshots;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Issue issue = (Issue) o;
+
+        if (condition != null ? !condition.equals(issue.condition) : issue.condition != null) return false;
+        if (criticality != null ? !criticality.equals(issue.criticality) : issue.criticality != null) return false;
+        if (dateOfCreation != null ? !dateOfCreation.equals(issue.dateOfCreation) : issue.dateOfCreation != null)
+            return false;
+        if (description != null ? !description.equals(issue.description) : issue.description != null) return false;
+        if (screenshots != null ? !screenshots.equals(issue.screenshots) : issue.screenshots != null) return false;
+        if (typeOfError != issue.typeOfError) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = dateOfCreation != null ? dateOfCreation.hashCode() : 0;
+        result = 31 * result + (typeOfError != null ? typeOfError.hashCode() : 0);
+        result = 31 * result + (criticality != null ? criticality.hashCode() : 0);
+        result = 31 * result + (condition != null ? condition.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (screenshots != null ? screenshots.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Issue{" +
+                "dateOfCreation=" + dateOfCreation +
+                ", typeOfError=" + typeOfError +
+                ", criticality='" + criticality + '\'' +
+                ", condition='" + condition + '\'' +
+                ", description='" + description + '\'' +
+                ", screenshots=" + screenshots +
+                '}';
+    }
 }

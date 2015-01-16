@@ -45,4 +45,32 @@ public class StoragedFile implements Serializable{
     public void setIssue(Issue issue) {
         this.issue = issue;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        StoragedFile that = (StoragedFile) o;
+
+        if (issue != null ? !issue.equals(that.issue) : that.issue != null) return false;
+        if (pathToFile != null ? !pathToFile.equals(that.pathToFile) : that.pathToFile != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = pathToFile != null ? pathToFile.hashCode() : 0;
+        result = 31 * result + (issue != null ? issue.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "StoragedFile{" +
+                "pathToFile='" + pathToFile + '\'' +
+                ", issue=" + issue +
+                '}';
+    }
 }

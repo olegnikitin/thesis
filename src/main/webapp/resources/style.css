@@ -1,0 +1,23 @@
+div{
+    float: left;
+    display: block;
+}
+#header{
+    text-align: center;
+    width: 100%;
+    border: 1px solid black;
+}
+#footer{
+    text-align: center;
+    width: 100%;
+    border: 1px solid black;
+}
+#container{
+    width: 100%;
+}
+#left_column{
+    width: 30%;
+}
+#right_column{
+    width: 70%;
+}

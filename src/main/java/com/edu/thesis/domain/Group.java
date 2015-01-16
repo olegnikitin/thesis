@@ -71,4 +71,40 @@ public class Group implements Serializable{
     public void setUsers(Set<User> users) {
         this.users = users;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Group group = (Group) o;
+
+        if (dateOfCreation != null ? !dateOfCreation.equals(group.dateOfCreation) : group.dateOfCreation != null)
+            return false;
+        if (info != null ? !info.equals(group.info) : group.info != null) return false;
+        if (nameOfTheGroup != null ? !nameOfTheGroup.equals(group.nameOfTheGroup) : group.nameOfTheGroup != null)
+            return false;
+        if (users != null ? !users.equals(group.users) : group.users != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = nameOfTheGroup != null ? nameOfTheGroup.hashCode() : 0;
+        result = 31 * result + (info != null ? info.hashCode() : 0);
+        result = 31 * result + (dateOfCreation != null ? dateOfCreation.hashCode() : 0);
+        result = 31 * result + (users != null ? users.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Group{" +
+                "nameOfTheGroup='" + nameOfTheGroup + '\'' +
+                ", info='" + info + '\'' +
+                ", dateOfCreation=" + dateOfCreation +
+                ", users=" + users +
+                '}';
+    }
 }
