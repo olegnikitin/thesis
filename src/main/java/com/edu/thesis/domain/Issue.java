@@ -42,8 +42,12 @@ public class Issue implements Serializable{
 
     @SuppressWarnings("JpaAttributeTypeInspection")
     @ManyToOne
-    @JoinColumn(name = "project_fk", nullable = false)
+    @JoinColumn(name = "project_fk") //nullable = false
     private Project projectOfTheIssue;
+
+    @ManyToOne
+    @JoinColumn(name = "user_fk")
+    private User ownerOfTheTask;
 
     @OneToMany(mappedBy = "issue")
     private Set<StoragedFile> screenshots;
@@ -120,5 +124,13 @@ public class Issue implements Serializable{
 
     public void setScreenshots(Set<StoragedFile> screenshots) {
         this.screenshots = screenshots;
+    }
+
+    public User getOwnerOfTheTask() {
+        return ownerOfTheTask;
+    }
+
+    public void setOwnerOfTheTask(User ownerOfTheTask) {
+        this.ownerOfTheTask = ownerOfTheTask;
     }
 }

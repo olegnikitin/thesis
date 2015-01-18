@@ -25,7 +25,7 @@
     Your email is<br/>
     <form:input path="email"/><form:errors path="email" cssClass="error" /><br/>
     Your password is<br/><!-- Bad idea. Delete later -->
-    <form:password path="password"/><form:errors path="password" cssClass="error" />
+    <form:password path="password"/><form:errors path="password" cssClass="error" /><br/>
     <!-- Add a group later -->
     <button type="submit">Edit</button>
   </form:form>

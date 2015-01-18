@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.Date;
 
 /**
  * Created by Oleg on 15.01.2015.
@@ -32,6 +33,7 @@ public class RegistrationController {
         if (bindingResult.hasErrors()) {
             return "registration/registration";
         }
+        user.setDateOfRegistration(new Date());
         userService.createUser(user);
         return "redirect:/users/edit_user=" + user.getLogin();//after registration - edit it
     }
