@@ -33,6 +33,6 @@ public class RegistrationController {
             return "registration/registration";
         }
         userService.createUser(user);
-        return "redirect:/users/edit=" + user.getLogin();//after registration - edit it
+        return "redirect:/users/edit_user=" + user.getLogin();//after registration - edit it
     }
 }

@@ -21,7 +21,7 @@ public class User implements Serializable{
     @Column
     private Integer id;
 
-    @Column
+    @Column(unique = true)
     @Pattern(regexp="^[a-zA-Z0-9]+$", message="Username must be alphanumeric with no spaces")
     private String login;
 

@@ -1,6 +1,7 @@
 package com.edu.thesis.dao.userDao;
 
 import com.edu.thesis.domain.User;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,6 +28,15 @@ public class UserDaoImpl implements UserDao {
     @Transactional
     public User getUser(Long id) {
         return (User) sessionFactory.getCurrentSession().get(User.class, id);
+    }
+
+    @Override
+    @Transactional
+    public User getUser(String userName) {
+        Query query = sessionFactory.getCurrentSession().createQuery("select u from User u where u.login = :login");
+        query.setString("login", userName);
+        return (User)query.list().get(0);//TODO: Bad idea. Check another way
+        //return (User) sessionFactory.getCurrentSession().get(User.class, userName);
     }
 
     @Override

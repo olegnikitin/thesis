@@ -23,7 +23,7 @@ public class GroupDaoImpl implements GroupDao {
     @Override
     @Transactional
     public List<Group> listOfGroup() {
-        return (List)sessionFactory.getCurrentSession().createQuery("from Group").list();
+    return (List)sessionFactory.getCurrentSession().createQuery("from Group").list();
     }
 
     @Override
