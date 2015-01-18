@@ -34,7 +34,7 @@ public class User implements Serializable{
     private String lastName;
 
     @Column
-    @Pattern(regexp = "/.+@.+\\..+/i")
+    @Pattern(regexp = ".+@.+")
     private String email;
 
     @Column(name = "date")
@@ -62,6 +62,14 @@ public class User implements Serializable{
         this.id = id;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -76,6 +84,14 @@ public class User implements Serializable{
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Date getDateOfRegistration() {
@@ -94,22 +110,6 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    public Group getGroup() {
-        return group;
-    }
-
-    public void setGroup(Group group) {
-        this.group = group;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public Set<RoleOfTheUser> getRolesOfTheUser() {
         return rolesOfTheUser;
     }
@@ -118,12 +118,12 @@ public class User implements Serializable{
         this.rolesOfTheUser = rolesOfTheUser;
     }
 
-    public String getEmail() {
-        return email;
+    public Group getGroup() {
+        return group;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
     @Override
@@ -138,6 +138,7 @@ public class User implements Serializable{
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
         if (group != null ? !group.equals(user.group) : user.group != null) return false;
+        if (id != null ? !id.equals(user.id) : user.id != null) return false;
         if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
         if (login != null ? !login.equals(user.login) : user.login != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
@@ -149,7 +150,8 @@ public class User implements Serializable{
 
     @Override
     public int hashCode() {
-        int result = login != null ? login.hashCode() : 0;
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
@@ -158,19 +160,5 @@ public class User implements Serializable{
         result = 31 * result + (rolesOfTheUser != null ? rolesOfTheUser.hashCode() : 0);
         result = 31 * result + (group != null ? group.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "login='" + login + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", dateOfRegistration=" + dateOfRegistration +
-                ", password='" + password + '\'' +
-                ", rolesOfTheUser=" + rolesOfTheUser +
-                ", group=" + group +
-                '}';
     }
 }

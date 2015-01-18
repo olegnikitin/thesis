@@ -15,7 +15,7 @@ import javax.validation.Valid;
  * Created by Oleg on 15.01.2015.
  */
 @Controller
-@RequestMapping(value = "/registration")
+@RequestMapping("/registration")
 public class RegistrationController {
 
     @Autowired

@@ -21,8 +21,8 @@
     <table cellspacing="0">
       <tr>
         <th><label for="user_first_name">First name:</label></th>
-        <td><sf:input path="fullName" size="15" id="user_first_name"/>
-          <sf:errors path="fullName" cssClass="error" /></td>
+        <td><sf:input path="firstName" size="15" id="user_first_name"/>
+          <sf:errors path="firstName" cssClass="error" /></td>
       </tr>
       <tr>
         <th><label for="user_screen_name">Username:</label></th>

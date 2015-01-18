@@ -40,8 +40,9 @@ public class Issue implements Serializable{
     @Enumerated(EnumType.STRING)
     private StatusOfTheTask statusOfTheTask;
 
+    @SuppressWarnings("JpaAttributeTypeInspection")
     @ManyToOne
-    @JoinColumn(name = "project_fk")
+    @JoinColumn(name = "project_fk", nullable = false)
     private Project projectOfTheIssue;
 
     @OneToMany(mappedBy = "issue")
