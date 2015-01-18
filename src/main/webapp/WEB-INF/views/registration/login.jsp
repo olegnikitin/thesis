@@ -65,8 +65,8 @@
     <table>
       <tr>
         <td>User:</td>
-        <td><sf:input type='text' path='username'/>
-          <sf:errors path="username" cssClass="error" /></td>
+        <td><sf:input type='text' path='login'/>
+          <sf:errors path="login" cssClass="error" /></td>
       </tr>
       <tr>
         <td>Password:</td>

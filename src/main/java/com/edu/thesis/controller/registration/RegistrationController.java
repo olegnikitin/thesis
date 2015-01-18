@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.sql.SQLException;
 import java.util.Date;
 
 /**
@@ -34,7 +35,13 @@ public class RegistrationController {
             return "registration/registration";
         }
         user.setDateOfRegistration(new Date());
-        userService.createUser(user);
+        try{
+            userService.createUser(user);//TODO: Catch a ERROR SqlExceptionHelper. Very important
+        }catch (Exception e){
+            e.printStackTrace();
+            return "registration/registration";
+        }
+
         return "redirect:/users/edit_user=" + user.getLogin();//after registration - edit it
     }
 }
