@@ -12,6 +12,6 @@
         <p>This is the homepage!</p>
         <a href="registration">Registration</a><br/>
         <a href="login">Login</a><br/>
-        <a href="create_project">Create project</a>
+        <a href="projects/create">Create project</a>
     </body>
 </html>

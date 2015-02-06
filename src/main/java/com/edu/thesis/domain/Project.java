@@ -57,4 +57,5 @@ public class Project {
     public void setIssues(Set<Issue> issues) {
         this.issues = issues;
     }
+
 }

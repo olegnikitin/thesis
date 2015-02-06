@@ -35,8 +35,7 @@ public class UserDaoImpl implements UserDao {
     public User getUser(String userName) {
         Query query = sessionFactory.getCurrentSession().createQuery("select u from User u where u.login = :login");
         query.setString("login", userName);
-        return (User)query.list().get(0);//TODO: Bad idea. Check another way
-        //return (User) sessionFactory.getCurrentSession().get(User.class, userName);
+        return (User)query.list().get(0);//TODO: Bad idea. Check another way. It cause 2 queries
     }
 
     @Override

@@ -13,28 +13,17 @@
 <head>
     <title>Create new project</title>
     <style>
-        .error {
-            color: #ff0000;
-        }
-
-        .errorblock {
-            color: #000;
-            background-color: #ffEEEE;
-            border: 3px solid #ff0000;
-            padding: 8px;
-            margin: 16px;
-        }
+        <%@include file="../../../resources/error.css" %>
     </style>
 </head>
 <body>
 <div>
   <h2>Create project</h2>
-  <form:form method="post" modelAttribute="project">
+  <form:form method="post" modelAttribute="dto">
     <form:errors path="*" cssClass="errorblock" element="div" />
 
     Enter the name of project <br/>
     <form:input path="nameOfTheProject"/>
-    <form:errors path="nameOfTheProject" cssClass="error" /><br/>
     Select the lead of the project<br/>
     <c:if test="${!empty userList}">
         <form:select path="leadOfTheProject">
@@ -43,7 +32,6 @@
             </c:forEach>
         </form:select>
     </c:if>
-    <form:errors path="leadOfTheProject" cssClass="error" /><br/>
     <c:if test="${empty userList}">
       There is no users <!-- Impossible -->
     </c:if>

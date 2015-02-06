@@ -5,12 +5,35 @@
   Time: 14:04
   To change this template use File | Settings | File Templates.
 --%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Edit project</title>
+    <style>
+        <%@include file="../../../resources/error.css" %>
+    </style>
 </head>
 <body>
+<h2>Edit project</h2>
+<form:form method="post" modelAttribute="dto">
+    <form:errors path="*" cssClass="errorblock" element="div" />
 
+    Enter the name of project <br/>
+    <form:input path="nameOfTheProject"/>
+    Select the lead of the project<br/>
+
+    <c:if test="${!empty userList}">
+        <form:select path="leadOfTheProject">
+            <c:forEach items="${userList}" var="user">
+                <form:option value="${user.id}" label="${user.firstName} ${user.lastName}"/>
+            </c:forEach>
+        </form:select>
+    </c:if>
+
+    <form:button>Edit</form:button>
+</form:form>
 </body>
 </html>
