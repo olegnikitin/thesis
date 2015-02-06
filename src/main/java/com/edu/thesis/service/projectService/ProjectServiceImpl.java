@@ -3,12 +3,14 @@ package com.edu.thesis.service.projectService;
 import com.edu.thesis.dao.projectDao.ProjectDao;
 import com.edu.thesis.domain.Project;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by Oleg on 19.01.2015.
  */
+@Service
 public class ProjectServiceImpl implements ProjectService {
 
     @Autowired

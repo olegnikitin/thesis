@@ -1,4 +1,4 @@
-package com.edu.thesis.controller;
+package com.edu.thesis.web.controller;
 
 import java.io.IOException;
 

@@ -15,7 +15,7 @@ import java.util.Set;
 @Entity
 @Table(name = "user_of_the_group")
 public class User implements Serializable{
-//http://stackoverflow.com/questions/8714491/hibernate-and-mysql-with-create-drop-option-console-output-shows-error-but
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column
@@ -32,6 +32,10 @@ public class User implements Serializable{
     @Column
     @Size(min = 3)
     private String lastName;
+
+    @Column
+    @Size(min = 3)
+    private String middleName;
 
     @Column
     @Pattern(regexp = ".+@.+")
@@ -123,5 +127,22 @@ public class User implements Serializable{
 
     public void setTasks(Set<Issue> tasks) {
         this.tasks = tasks;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                '}';
     }
 }

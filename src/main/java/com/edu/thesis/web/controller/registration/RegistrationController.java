@@ -1,4 +1,4 @@
-package com.edu.thesis.controller.registration;
+package com.edu.thesis.web.controller.registration;
 
 import com.edu.thesis.domain.User;
 import com.edu.thesis.service.userService.UserService;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
-import java.sql.SQLException;
 import java.util.Date;
 
 /**
@@ -42,6 +41,6 @@ public class RegistrationController {
             return "registration/registration";
         }
 
-        return "redirect:/users/edit_user=" + user.getLogin();//after registration - edit it
+        return "redirect:/users/edit_user=" + user.getId();
     }
 }

@@ -1,4 +1,4 @@
-package com.edu.thesis.controller;
+package com.edu.thesis.web.controller;
 
 import com.edu.thesis.domain.User;
 import com.edu.thesis.service.userService.UserService;
@@ -21,18 +21,17 @@ public class EditUserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/users/edit_user={userName}", method = RequestMethod.GET)//TODO: Unsecure. Check another way
-    public String getToEditUserPage(@PathVariable("userName") String userName, Model model){
-        if(userService.getUser(userName) == null){
+    @RequestMapping(value = "/users/edit_user={id}", method = RequestMethod.GET)//TODO: Unsecure. Check another way
+    public String getToEditUserPage(@PathVariable("id") Long id, Model model){
+        if(userService.getUser(id) == null){
             return "errorPages/403";
         }
-        model.addAttribute(userService.getUser(userName));
+        model.addAttribute(userService.getUser(id));
         return "edit_user";
     }
 
-    @RequestMapping(value = "/users/edit_user={userName}", method = RequestMethod.POST)
-    public String editUserPostMethod(@Valid User user, @PathVariable("userName") String userName, //String is only for URI
-                                     BindingResult bindingResult){
+    @RequestMapping(value = "/users/edit_user={id}", method = RequestMethod.POST)
+    public String editUserPostMethod(@Valid User user, @PathVariable("id") Long id, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             return "edit_user";
         }

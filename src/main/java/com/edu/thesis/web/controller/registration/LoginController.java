@@ -1,4 +1,4 @@
-package com.edu.thesis.controller.registration;
+package com.edu.thesis.web.controller.registration;
 
 import com.edu.thesis.domain.User;
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,7 @@ public class LoginController {
         if(bindingResult.hasErrors()){
             return "registration/login";
         }
-        return "/";
+        return "/home";
     }
 
 }

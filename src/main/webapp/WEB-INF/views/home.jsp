@@ -10,7 +10,8 @@
     <body>
         <h1>Hello World!</h1>
         <p>This is the homepage!</p>
-        <a href="test_add">Add</a><br/>
-        <a href="test_edit">Edit</a>
+        <a href="registration">Registration</a><br/>
+        <a href="login">Login</a><br/>
+        <a href="create_project">Create project</a>
     </body>
 </html>

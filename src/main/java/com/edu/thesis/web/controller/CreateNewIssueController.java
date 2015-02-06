@@ -1,4 +1,4 @@
-package com.edu.thesis.controller;
+package com.edu.thesis.web.controller;
 
 import com.edu.thesis.domain.Issue;
 import com.edu.thesis.service.issueService.IssueService;
@@ -32,7 +32,7 @@ public class CreateNewIssueController {
             return "create_issue";
         }
         issueService.createIssue(issue);
-        return "edit_issue=" + issue.getNameOfIssue();
+        return "edit_issue=" + issue.getId();
     }
 
 }
