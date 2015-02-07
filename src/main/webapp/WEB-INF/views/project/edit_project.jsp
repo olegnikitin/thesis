@@ -18,11 +18,11 @@
 </head>
 <body>
 <h2>Edit project</h2>
-<form:form method="post" modelAttribute="dto">
+<form:form method="post" modelAttribute="project">
     <form:errors path="*" cssClass="errorblock" element="div" />
 
     Enter the name of project <br/>
-    <form:input path="nameOfTheProject"/>
+    <form:input path="nameOfTheProject"/><br/>
     Select the lead of the project<br/>
 
     <c:if test="${!empty userList}">
@@ -31,6 +31,28 @@
                 <form:option value="${user.id}" label="${user.firstName} ${user.lastName}"/>
             </c:forEach>
         </form:select>
+    </c:if><br/>
+
+    <c:if test="${!empty issueList}">
+        <h3>Edit your issues</h3>
+        <table>
+            <tr>
+                <td>Name of issue</td>
+                <td>Description</td>
+                <td>Operations</td>
+            </tr>
+            <c:forEach items="${issueList}" var="issue">
+                <tr>
+                    <td>${issue.nameOfIssue}</td>
+                    <td>${issue.description}</td>
+                    <td><a href="issues/update=${issue.id}">Update</a>
+                    <a href="issues/delete=${issue.id}">Delete</a></td>
+                </tr>
+            </c:forEach>
+        </table>
+    </c:if>
+    <c:if test="${empty issueList}">
+        There is no issues for now <br/>
     </c:if>
 
     <form:button>Edit</form:button>

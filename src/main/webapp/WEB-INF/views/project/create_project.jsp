@@ -23,7 +23,7 @@
     <form:errors path="*" cssClass="errorblock" element="div" />
 
     Enter the name of project <br/>
-    <form:input path="nameOfTheProject"/>
+    <form:input path="nameOfTheProject"/><br/>
     Select the lead of the project<br/>
     <c:if test="${!empty userList}">
         <form:select path="leadOfTheProject">
@@ -34,7 +34,7 @@
     </c:if>
     <c:if test="${empty userList}">
       There is no users <!-- Impossible -->
-    </c:if>
+    </c:if><br/>
     <form:button>Create</form:button>
   </form:form>
 </div>

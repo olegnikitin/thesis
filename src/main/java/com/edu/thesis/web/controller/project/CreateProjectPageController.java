@@ -41,12 +41,11 @@ public class CreateProjectPageController {
         if(bindingResult.hasErrors()){
             return "project/create_project";
         }
-        System.out.println(dto); //TODO:Delete later
         Project project = new Project();
         project.setNameOfTheProject(dto.getNameOfTheProject());
         project.setLeadOfTheProject(userService.getUser(dto.getLeadOfTheProject()));
         projectService.createProject(project);
-        return "project/edit_project=" + project.getId();
+        return "redirect:/projects/edit=" + project.getId();
     }
 
 }
