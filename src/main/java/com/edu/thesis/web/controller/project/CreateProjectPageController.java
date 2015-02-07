@@ -1,6 +1,5 @@
 package com.edu.thesis.web.controller.project;
 
-import com.edu.thesis.domain.Issue;
 import com.edu.thesis.domain.Project;
 import com.edu.thesis.service.projectService.ProjectService;
 import com.edu.thesis.service.userService.UserService;
@@ -12,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by Oleg on 19.01.2015.

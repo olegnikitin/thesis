@@ -17,6 +17,7 @@ import java.util.Map;
  * Created by Oleg on 06.02.2015.
  */
 @Controller
+@RequestMapping(value = "projects/edit={id}")
 public class EditProjectPageController {
 
     @Autowired
@@ -25,7 +26,7 @@ public class EditProjectPageController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "projects/edit={id}", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String getToCreateProjectPageMethod(Map<String, Object> map, @PathVariable("id") Long id){
         Project project = projectService.getProject(id);
         map.put("project", project);
@@ -34,7 +35,7 @@ public class EditProjectPageController {
         return "project/edit_project";
     }
 
-    @RequestMapping(value = "projects/edit={id}", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public String createProjectMethod(@Valid Project project, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "project/edit_project";

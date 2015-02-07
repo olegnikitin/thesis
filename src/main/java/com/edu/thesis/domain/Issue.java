@@ -1,7 +1,8 @@
 package com.edu.thesis.domain;
 
+import com.edu.thesis.domain.enums.PriorityOfTheTask;
 import com.edu.thesis.domain.enums.StatusOfTheTask;
-import com.edu.thesis.domain.enums.TypeOfError;
+import com.edu.thesis.domain.enums.TypeOfTheTask;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -27,14 +28,18 @@ public class Issue implements Serializable{
     private String description;
 
     @Column
-    private String criticality;
+    @Enumerated(EnumType.STRING)
+    private PriorityOfTheTask priority;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private TypeOfTheTask type;
 
     @Column
     private Date dateOfCreation;
 
     @Column
-    @Enumerated(EnumType.STRING)
-    private TypeOfError typeOfError;
+    private Date dateOfModification;
 
     @Column
     @Enumerated(EnumType.STRING)
@@ -42,7 +47,7 @@ public class Issue implements Serializable{
 
     @SuppressWarnings("JpaAttributeTypeInspection")
     @ManyToOne
-    @JoinColumn(name = "project_fk") //nullable = false
+    @JoinColumn(name = "project_fk")
     private Project projectOfTheIssue;
 
     @ManyToOne
@@ -78,12 +83,20 @@ public class Issue implements Serializable{
         this.description = description;
     }
 
-    public String getCriticality() {
-        return criticality;
+    public PriorityOfTheTask getPriority() {
+        return priority;
     }
 
-    public void setCriticality(String criticality) {
-        this.criticality = criticality;
+    public void setPriority(PriorityOfTheTask priority) {
+        this.priority = priority;
+    }
+
+    public TypeOfTheTask getType() {
+        return type;
+    }
+
+    public void setType(TypeOfTheTask type) {
+        this.type = type;
     }
 
     public Date getDateOfCreation() {
@@ -92,14 +105,6 @@ public class Issue implements Serializable{
 
     public void setDateOfCreation(Date dateOfCreation) {
         this.dateOfCreation = dateOfCreation;
-    }
-
-    public TypeOfError getTypeOfError() {
-        return typeOfError;
-    }
-
-    public void setTypeOfError(TypeOfError typeOfError) {
-        this.typeOfError = typeOfError;
     }
 
     public StatusOfTheTask getStatusOfTheTask() {
@@ -118,6 +123,14 @@ public class Issue implements Serializable{
         this.projectOfTheIssue = projectOfTheIssue;
     }
 
+    public User getOwnerOfTheTask() {
+        return ownerOfTheTask;
+    }
+
+    public void setOwnerOfTheTask(User ownerOfTheTask) {
+        this.ownerOfTheTask = ownerOfTheTask;
+    }
+
     public Set<StoragedFile> getScreenshots() {
         return screenshots;
     }
@@ -126,11 +139,26 @@ public class Issue implements Serializable{
         this.screenshots = screenshots;
     }
 
-    public User getOwnerOfTheTask() {
-        return ownerOfTheTask;
+    public Date getDateOfModification() {
+        return dateOfModification;
     }
 
-    public void setOwnerOfTheTask(User ownerOfTheTask) {
-        this.ownerOfTheTask = ownerOfTheTask;
+    public void setDateOfModification(Date dateOfModification) {
+        this.dateOfModification = dateOfModification;
+    }
+
+    @Override
+    public String toString() {
+        return "Issue{" +
+                "nameOfIssue='" + nameOfIssue + '\'' +
+                ", description='" + description + '\'' +
+                ", priority=" + priority +
+                ", type=" + type +
+                ", dateOfCreation=" + dateOfCreation +
+                ", dateOfModification=" + dateOfModification +
+                ", statusOfTheTask=" + statusOfTheTask +
+                ", projectOfTheIssue=" + projectOfTheIssue +
+                ", ownerOfTheTask=" + ownerOfTheTask +
+                '}';
     }
 }

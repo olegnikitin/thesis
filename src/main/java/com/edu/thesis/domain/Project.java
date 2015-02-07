@@ -1,6 +1,7 @@
 package com.edu.thesis.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "table_project")
-public class Project {
+public class Project implements Serializable{
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
