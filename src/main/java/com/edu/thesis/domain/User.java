@@ -13,7 +13,7 @@ import java.util.Set;
  * Created by Oleg on 19.12.2014.
  */
 @Entity
-@Table(name = "user_of_the_group")
+@Table(name = "user_of_the_bugtracker")
 public class User implements Serializable{
 
     @Id
@@ -41,7 +41,7 @@ public class User implements Serializable{
     @Pattern(regexp = ".+@.+")
     private String email;
 
-    @Column(name = "date")
+    @Column(name = "date_of_registration")
     private Date dateOfRegistration;
 
     @Column

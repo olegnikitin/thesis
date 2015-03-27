@@ -20,13 +20,14 @@
     <h2>Your login is <b><form:label path="login"/></b></h2><br/>
     Your first name is<br/>
     <form:input path="firstName"/><form:errors path="firstName" cssClass="error" /><br/>
+    Your middle name is<br/>
+    <form:input path="middleName"/><form:errors path="middleName" cssClass="error" /><br/>
     Your last name is<br/>
     <form:input path="lastName"/><form:errors path="lastName" cssClass="error" /><br/>
     Your email is<br/>
     <form:input path="email"/><form:errors path="email" cssClass="error" /><br/>
-    Your password is<br/><!-- Bad idea. Delete later -->
+    Your password is<br/>
     <form:password path="password"/><form:errors path="password" cssClass="error" /><br/>
-    <!-- Add a group later -->
     <button type="submit">Edit</button>
   </form:form>
 </div>

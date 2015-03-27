@@ -49,11 +49,10 @@ public class CreateNewIssueController {
         if(bindingResult.hasErrors()){
             return "issue/create_issue";
         }
-        issue.setProjectOfTheIssue(projectService.getProject(pr_id));//TODO:Check why it isn't works
+        issue.setProjectOfTheIssue(projectService.getProject(pr_id));
         Date date = new Date();
         issue.setDateOfCreation(date);
-        issue.setDateOfModification(date);
-        //System.out.println(issue);
+        issue.setDateOfModification(date);//TODO: Add current user to the task
         issueService.createIssue(issue);
         return "redirect:/projects/project=" + pr_id + "/issues/edit=" + issue.getId();
     }
