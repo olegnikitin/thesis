@@ -5,11 +5,9 @@
 
 <hibernate-configuration>
     <session-factory>
-        <mapping class="com.edu.thesis.domain.Group" />
         <mapping class="com.edu.thesis.domain.Issue" />
         <mapping class="com.edu.thesis.domain.User" />
         <mapping class="com.edu.thesis.domain.StoragedFile" />
-        <mapping class="com.edu.thesis.domain.Test" />
     </session-factory>
 
 </hibernate-configuration>

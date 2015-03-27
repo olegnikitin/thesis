@@ -31,6 +31,7 @@ public class CreateNewIssueController {
     @Autowired
     private IssueService issueService;
 
+    @Autowired
     private ProjectService projectService;
 
     @RequestMapping(method = RequestMethod.GET)
@@ -48,7 +49,7 @@ public class CreateNewIssueController {
         if(bindingResult.hasErrors()){
             return "issue/create_issue";
         }
-        //issue.setProjectOfTheIssue(projectService.getProject(pr_id));//TODO:Check whit it isn't works
+        issue.setProjectOfTheIssue(projectService.getProject(pr_id));//TODO:Check why it isn't works
         Date date = new Date();
         issue.setDateOfCreation(date);
         issue.setDateOfModification(date);

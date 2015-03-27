@@ -16,14 +16,15 @@ import javax.sql.DataSource;
  */
 @Configuration
 @EnableWebSecurity
-@Import(DBConfiguration.class)
-public class AppSecurityConfig extends WebSecurityConfigurerAdapter {//TODO: Write. Everything is wrong
+//@Import(DBConfiguration.class)
+public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 //http://stoflru.org/questions/25388855/spring-security-with-database-authorization-with-java-configuration
+//http://www.mkyong.com/spring-security/spring-security-hello-world-annotation-example/
 
     @Autowired
     private DataSource dataSource;
 
-    @Autowired
+    /*@Autowired
     public void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource).usersByUsernameQuery("select login, password " +
@@ -38,6 +39,20 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {//TODO: Wri
                 .antMatchers("/protected/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/confidential/**").access("hasRole('ROLE_SUPERADMIN')")
                 .and().formLogin().defaultSuccessUrl("/", false);
+
+    }*/
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
+        auth.inMemoryAuthentication().withUser("admin").password("123456").roles("ADMIN");
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+
+        http.authorizeRequests()
+                .antMatchers("/**").access("hasRole('ROLE_ADMIN')")
+                .and().formLogin();
 
     }
 }

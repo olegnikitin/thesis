@@ -26,11 +26,12 @@
     Select the lead of the project<br/>
 
     <c:if test="${!empty userList}">
-        <form:select path="leadOfTheProject">
+        <select id="lead" name="lead">
             <c:forEach items="${userList}" var="user">
-                <form:option value="${user.id}" label="${user.firstName} ${user.lastName}"/>
+                <option name="${user.login}">${user.firstName} ${user.lastName}</option>
             </c:forEach>
-        </form:select>
+        </select>
+
     </c:if><br/>
 
     <c:if test="${!empty issueList}">

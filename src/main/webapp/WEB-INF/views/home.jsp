@@ -12,6 +12,7 @@
         <p>This is the homepage!</p>
         <a href="registration">Registration</a><br/>
         <a href="login">Login</a><br/>
-        <a href="projects/create">Create project</a>
+        <a href="projects/create">Create project</a><br/>
+        <a href="projects/project=4/issues/create">Create issue</a>
     </body>
 </html>

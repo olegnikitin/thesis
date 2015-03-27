@@ -22,7 +22,7 @@ public class Project implements Serializable{
     @OneToOne
     private User leadOfTheProject;
 
-    @OneToMany(mappedBy = "projectOfTheIssue", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "projectOfTheIssue")//, fetch = FetchType.EAGER
     private Set<Issue> issues;
 
     public Project() {    }

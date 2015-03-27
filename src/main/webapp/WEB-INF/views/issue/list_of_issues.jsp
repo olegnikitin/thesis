@@ -10,7 +10,7 @@
 <html>
 <head lang="en">
   <meta charset="UTF-8">
-  <style><%@include file="../../resources/style.css" %></style>
+  <style><%@include file="../../../resources/style.css" %></style>
 </head>
 <body>
 <div id="header">
