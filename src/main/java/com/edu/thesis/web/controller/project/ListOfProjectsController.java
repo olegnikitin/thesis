@@ -1,5 +1,6 @@
 package com.edu.thesis.web.controller.project;
 
+import com.edu.thesis.domain.Project;
 import com.edu.thesis.service.projectService.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,9 @@ public class ListOfProjectsController {
     @RequestMapping(value = "my/projects", method = RequestMethod.GET)
     public ModelAndView getToListOfProjectsMethod(){
         ModelAndView mv = new ModelAndView("project/list_of_projects");
+        mv.addObject("project", new Project());
         mv.addObject("projectsList", projectService.listOfProjects());
         return mv;
     }
+
 }

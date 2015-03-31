@@ -19,11 +19,13 @@
 <body>
 <div>
   <h2>Create project</h2>
-  <form:form method="post" modelAttribute="dto">
+  <form:form method="post" modelAttribute="project">
     <form:errors path="*" cssClass="errorblock" element="div" />
 
     Enter the name of project <br/>
     <form:input path="nameOfTheProject"/><br/>
+    Enter the description of the project<br/>
+    <form:input path="descriptionOfTheProject"/><br/>
     Select the lead of the project<br/>
     <c:if test="${!empty userList}">
         <form:select path="leadOfTheProject">

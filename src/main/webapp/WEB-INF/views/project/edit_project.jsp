@@ -23,6 +23,8 @@
 
     Enter the name of project <br/>
     <form:input path="nameOfTheProject"/><br/>
+    Enter the description of the project<br/>
+    <form:input path="descriptionOfTheProject"/><br/>
     Select the lead of the project<br/>
 
     <c:if test="${!empty userList}">

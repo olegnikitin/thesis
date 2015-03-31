@@ -46,7 +46,7 @@ public class CreateNewIssueController {
     @RequestMapping(method = RequestMethod.POST)
     public String createNewIssuePostMethod(@PathVariable("pr_id") Long pr_id,
                                            @ModelAttribute @Valid Issue issue, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
+        if(bindingResult.hasErrors()){//TODO: Set a check for project if it exist
             return "issue/create_issue";
         }
         issue.setProjectOfTheIssue(projectService.getProject(pr_id));

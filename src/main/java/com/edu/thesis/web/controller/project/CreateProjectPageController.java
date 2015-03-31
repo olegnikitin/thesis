@@ -28,19 +28,16 @@ public class CreateProjectPageController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getToCreateProjectPageMethod(Map<String, Object> map){
-        map.put("dto", new ProjectDto());
+        map.put("project", new Project());
         map.put("userList", userService.listOfUsers());
         return "project/create_project";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String createProjectMethod(@Valid ProjectDto dto, BindingResult bindingResult){
+    public String createProjectMethod(@Valid Project project, BindingResult bindingResult){//TODO: Get user for project without dto
         if(bindingResult.hasErrors()){
             return "project/create_project";
         }
-        Project project = new Project();
-        project.setNameOfTheProject(dto.getNameOfTheProject());
-        project.setLeadOfTheProject(userService.getUser(dto.getLeadOfTheProject()));
         projectService.createProject(project);
         return "redirect:/projects/edit=" + project.getId();
     }
