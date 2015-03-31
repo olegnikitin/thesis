@@ -1,4 +1,4 @@
-package com.edu.thesis.web.controller;
+package com.edu.thesis.web.controller.issue;
 
 import com.edu.thesis.domain.Issue;
 import com.edu.thesis.service.issueService.IssueService;

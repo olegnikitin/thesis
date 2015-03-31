@@ -19,10 +19,13 @@ public class Project implements Serializable{
     @Column
     private String nameOfTheProject;
 
+    @Column
+    private String descriptionOfTheProject;
+
     @OneToOne
     private User leadOfTheProject;
 
-    @OneToMany(mappedBy = "projectOfTheIssue")//, fetch = FetchType.EAGER
+    @OneToMany(mappedBy = "projectOfTheIssue")
     private Set<Issue> issues;
 
     public Project() {    }
@@ -59,4 +62,11 @@ public class Project implements Serializable{
         this.issues = issues;
     }
 
+    public String getDescriptionOfTheProject() {
+        return descriptionOfTheProject;
+    }
+
+    public void setDescriptionOfTheProject(String descriptionOfTheProject) {
+        this.descriptionOfTheProject = descriptionOfTheProject;
+    }
 }

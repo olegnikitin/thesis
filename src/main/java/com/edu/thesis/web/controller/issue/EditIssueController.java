@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * Created by Oleg on 07.02.2015.
@@ -25,6 +26,8 @@ import java.util.Map;
 @Controller
 @RequestMapping(value = "projects/project={pr_id}/issues/edit={is_id}")
 public class EditIssueController {
+
+    private static Logger log = Logger.getLogger(EditIssueController.class.getName());
 
     @Autowired
     private IssueService issueService;
@@ -42,9 +45,11 @@ public class EditIssueController {
     @RequestMapping(method = RequestMethod.POST)
     public String editIssueMethod(@ModelAttribute @Valid Issue issue, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
+            log.warning("error while editing");
             return "issue/edit_issue";
         }
         issue.setDateOfModification(new Date());
+        log.info(issue + " was created");
         return "issue/edit_issue";
     }
 }
