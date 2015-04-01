@@ -5,13 +5,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <title>Home</title>
     </head>
     <body>
         <h1>Hello World!</h1>
         <p>This is the homepage!</p>
         <a href="registration">Registration</a><br/>
-        <a href="login">Login</a>Isn't workable yet<br/>
+        <a href="login">Login</a> Isn't workable yet<br/>
         <a href="my/projects/create">Create project</a><br/>
         <a href="my/projects/project=1/issues/create">Create issue for first project</a><br/>
         <a href="my/projects">List of projects</a><br/>
