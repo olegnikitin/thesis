@@ -8,10 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Page not found</title>
+    <title>Not found</title>
 </head>
 <body>
-<h1>Page not found</h1>
+<h1>404. Not found</h1>
 <a href="../../">Home</a>
 </body>
 </html>

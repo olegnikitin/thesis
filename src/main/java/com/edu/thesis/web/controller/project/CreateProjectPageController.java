@@ -17,7 +17,7 @@ import java.util.Map;
  * Created by Oleg on 19.01.2015.
  */
 @Controller
-@RequestMapping("projects/create")
+@RequestMapping("my/projects/create")
 public class CreateProjectPageController {
 
     @Autowired
@@ -39,7 +39,7 @@ public class CreateProjectPageController {
             return "project/create_project";
         }
         projectService.createProject(project);
-        return "redirect:/projects/edit=" + project.getId();
+        return "redirect:my//projects/edit=" + project.getId();
     }
 
 }

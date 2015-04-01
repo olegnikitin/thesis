@@ -1,6 +1,7 @@
 package com.edu.thesis.web.controller.issue;
 
 import com.edu.thesis.domain.Issue;
+import com.edu.thesis.domain.Project;
 import com.edu.thesis.service.issueService.IssueService;
 import com.edu.thesis.service.projectService.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +25,15 @@ public class ListOfIssuesPageController {
     @Autowired
     private ProjectService projectService;
 
-    @RequestMapping(value = "projects/project={pr_id}/issues", method = RequestMethod.GET)
+    @RequestMapping(value = "my/projects/project={pr_id}/issues", method = RequestMethod.GET)
     public ModelAndView getMethodToGetListOfBugsPage(@PathVariable("pr_id") Long id){
-        ModelAndView mv = new ModelAndView("issue/list_of_issues");
-        mv.addObject("issue", new Issue());
-        mv.addObject("issueList", projectService.getProject(id).getIssues());//TODO: Set an exception if there is no such project
+        Project project = projectService.getProject(id);
+        ModelAndView mv = null;
+        if(!(project == null)){
+            mv = new ModelAndView("issue/list_of_issues");
+            mv.addObject("issue", new Issue());
+            mv.addObject("issueList", project.getIssues());
+        }else mv = new ModelAndView("errorPages/404");
         return mv;
     }
 

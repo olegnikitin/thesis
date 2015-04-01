@@ -11,10 +11,10 @@
         <h1>Hello World!</h1>
         <p>This is the homepage!</p>
         <a href="registration">Registration</a><br/>
-        <a href="login">Login</a><br/>
-        <a href="projects/create">Create project</a><br/>
-        <a href="projects/project=1/issues/create">Create issue for first project</a><br/>
+        <a href="login">Login</a>Isn't workable yet<br/>
+        <a href="my/projects/create">Create project</a><br/>
+        <a href="my/projects/project=1/issues/create">Create issue for first project</a><br/>
         <a href="my/projects">List of projects</a><br/>
-        <a href="projects/project=1/issues">List of issues of first project</a><br/>
+        <a href="my/projects/project=1/issues">List of issues of first project</a><br/>
     </body>
 </html>

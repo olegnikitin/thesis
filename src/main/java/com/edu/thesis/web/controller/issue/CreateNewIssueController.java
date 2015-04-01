@@ -25,7 +25,7 @@ import java.util.Map;
  * Created by Oleg on 16.01.2015.
  */
 @Controller
-@RequestMapping(value = "projects/project={pr_id}/issues/create")
+@RequestMapping(value = "my/projects/project={pr_id}/issues/create")
 public class CreateNewIssueController {
 
     @Autowired
@@ -54,7 +54,7 @@ public class CreateNewIssueController {
         issue.setDateOfCreation(date);
         issue.setDateOfModification(date);//TODO: Add current user to the task
         issueService.createIssue(issue);
-        return "redirect:/projects/project=" + pr_id + "/issues/edit=" + issue.getId();
+        return "redirect:my//projects/project=" + pr_id + "/issues/edit=" + issue.getId();
     }
 
 }

@@ -26,19 +26,19 @@ public class EditUserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/users/edit_user={id}", method = RequestMethod.GET)//TODO: Unsecure. Check another way
+    @RequestMapping(value = "my//users/edit_user={id}", method = RequestMethod.GET)//TODO: Unsecure. Check another way
     public String getToEditUserPage(@PathVariable("id") Long id, Model model){
-        if(userService.getUser(id) == null){
-            return "errorPages/403";
-        }
         User user = userService.getUser(id);
+        if(user == null){
+            return "errorPages/404";
+        }
         date = user.getDateOfRegistration();
         login = user.getLogin();
-        model.addAttribute(user);
+        model.addAttribute("user", user);
         return "edit_user";
     }
 
-    @RequestMapping(value = "/users/edit_user={id}", method = RequestMethod.POST)
+    @RequestMapping(value = "my/users/edit_user={id}", method = RequestMethod.POST)
     public String editUserPostMethod(@Valid @ModelAttribute User user, @PathVariable("id") Long id, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             return "edit_user";
