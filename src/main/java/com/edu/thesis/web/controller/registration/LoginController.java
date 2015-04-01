@@ -16,7 +16,7 @@ import javax.validation.Valid;
 @RequestMapping("/login")
 public class LoginController {
 
-    @RequestMapping(method = RequestMethod.GET) //TODO: Check if the service need
+    @RequestMapping(method = RequestMethod.GET)
     public String loginGetMethod(Model model){
         model.addAttribute(new User());
         return "registration/login";

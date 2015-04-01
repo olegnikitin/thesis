@@ -26,7 +26,7 @@ public class EditUserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "my//users/edit_user={id}", method = RequestMethod.GET)//TODO: Unsecure. Check another way
+    @RequestMapping(value = "my//users/edit_user={id}", method = RequestMethod.GET)
     public String getToEditUserPage(@PathVariable("id") Long id, Model model){
         User user = userService.getUser(id);
         if(user == null){

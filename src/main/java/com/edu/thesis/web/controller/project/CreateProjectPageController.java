@@ -34,7 +34,7 @@ public class CreateProjectPageController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String createProjectMethod(@Valid Project project, BindingResult bindingResult){//TODO: Get user for project without dto
+    public String createProjectMethod(@Valid Project project, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             return "project/create_project";
         }

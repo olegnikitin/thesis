@@ -66,11 +66,6 @@ public class DBConfiguration {
 
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
-        /*HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setGenerateDdl(true);
-        vendorAdapter.setDatabasePlatform(env.getProperty("jdbc.dialect"));
-        vendorAdapter.setShowSql(true);//TODO: force to make it working*/
-
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan("com.edu.thesis.domain");

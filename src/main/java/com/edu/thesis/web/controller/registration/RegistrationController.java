@@ -34,7 +34,7 @@ public class RegistrationController {
         return mv;
     }
 
-    @RequestMapping(method = RequestMethod.POST)//TODO: Write it
+    @RequestMapping(method = RequestMethod.POST)
     public String addUserFromForm(@Valid @ModelAttribute User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "registration/registration";
