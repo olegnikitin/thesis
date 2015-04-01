@@ -39,7 +39,7 @@ public class CreateProjectPageController {
             return "project/create_project";
         }
         projectService.createProject(project);
-        return "redirect:my//projects/edit=" + project.getId();
+        return "redirect:/my/projects/edit=" + project.getId();
     }
 
 }

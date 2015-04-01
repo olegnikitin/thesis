@@ -55,7 +55,7 @@
         </table>
     </c:if>
     <c:if test="${empty issueList}">
-        There is no issues for now <br/>
+        <h2>There are no issues for now</h2>
     </c:if>
 
     <form:button>Edit</form:button>
