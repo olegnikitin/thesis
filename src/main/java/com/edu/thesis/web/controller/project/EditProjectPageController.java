@@ -42,22 +42,11 @@ public class EditProjectPageController {
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView createProjectMethod(@Valid @ModelAttribute Project project, BindingResult bindingResult) {
         ModelAndView mav = new ModelAndView("project/edit_project");
-        /*Map<String, Object> map = mav.getModel();
-        project.setLeadOfTheProject(userService.getUser((String)map.get("lead")));   error*/
         if (bindingResult.hasErrors()) {
             return mav;
         }
         projectService.updateProject(project);
         return mav;
     }
-
-    /*@RequestMapping(method = RequestMethod.POST)
-    public String createProjectMethod(@Valid Project project, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "project/edit_project";
-        }
-        projectService.updateProject(project);
-        return "project/edit_project=" + project.getId();
-    }*/
 
 }

@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.logging.Logger;
 
 /**
  * Created by Oleg on 15.01.2015.
@@ -20,6 +21,8 @@ import java.util.Date;
 @Controller
 @RequestMapping("/registration")
 public class RegistrationController {
+
+    private static final Logger log = Logger.getLogger(RegistrationController.class.getName());
 
     @Autowired
     private UserService userService;
@@ -39,10 +42,11 @@ public class RegistrationController {
         user.setDateOfRegistration(new Date());
         try{
             userService.createUser(user);//TODO: Catch a ERROR SqlExceptionHelper. Very important
+            log.info(user + " was created");
         }catch (Exception e){
-            e.printStackTrace();
+            log.warning("Failed to create user\n" + e);
             return "registration/registration";
         }
-        return "redirect:/users/edit_user=" + user.getId();
+        return "forward:/my/users/edit_user=" + user.getId();
     }
 }

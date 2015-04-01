@@ -30,7 +30,7 @@
     <c:if test="${!empty userList}">
         <select id="lead" name="lead">
             <c:forEach items="${userList}" var="user">
-                <option name="${user.login}">${user.firstName} ${user.lastName}</option>
+                <option name="${user.login}" <c:if test="${project.id == user.id}">selected</c:if> >${user.firstName} ${user.lastName}</option>
             </c:forEach>
         </select>
 
@@ -55,7 +55,7 @@
         </table>
     </c:if>
     <c:if test="${empty issueList}">
-        <h2>There are no issues for now</h2>
+        <h3>There are no issues for now</h3>
     </c:if>
 
     <form:button>Edit</form:button>

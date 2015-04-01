@@ -140,9 +140,47 @@ public class User implements Serializable{
     @Override
     public String toString() {
         return "User{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                "tasks=" + tasks +
+                ", rolesOfTheUser=" + rolesOfTheUser +
+                ", password='" + password + '\'' +
+                ", dateOfRegistration=" + dateOfRegistration +
+                ", email='" + email + '\'' +
                 ", middleName='" + middleName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", login='" + login + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (id != null ? !id.equals(user.id) : user.id != null) return false;
+        if (login != null ? !login.equals(user.login) : user.login != null) return false;
+        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
+        if (middleName != null ? !middleName.equals(user.middleName) : user.middleName != null) return false;
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        if (dateOfRegistration != null ? !dateOfRegistration.equals(user.dateOfRegistration) : user.dateOfRegistration != null)
+            return false;
+        return !(password != null ? !password.equals(user.password) : user.password != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (login != null ? login.hashCode() : 0);
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (middleName != null ? middleName.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (dateOfRegistration != null ? dateOfRegistration.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        return result;
     }
 }

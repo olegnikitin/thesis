@@ -161,4 +161,37 @@ public class Issue implements Serializable{
                 ", ownerOfTheTask=" + ownerOfTheTask +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Issue issue = (Issue) o;
+
+        if (id != null ? !id.equals(issue.id) : issue.id != null) return false;
+        if (nameOfIssue != null ? !nameOfIssue.equals(issue.nameOfIssue) : issue.nameOfIssue != null) return false;
+        if (description != null ? !description.equals(issue.description) : issue.description != null) return false;
+        if (priority != issue.priority) return false;
+        if (type != issue.type) return false;
+        if (dateOfCreation != null ? !dateOfCreation.equals(issue.dateOfCreation) : issue.dateOfCreation != null)
+            return false;
+        if (dateOfModification != null ? !dateOfModification.equals(issue.dateOfModification) : issue.dateOfModification != null)
+            return false;
+        return statusOfTheTask == issue.statusOfTheTask;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (nameOfIssue != null ? nameOfIssue.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (priority != null ? priority.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (dateOfCreation != null ? dateOfCreation.hashCode() : 0);
+        result = 31 * result + (dateOfModification != null ? dateOfModification.hashCode() : 0);
+        result = 31 * result + (statusOfTheTask != null ? statusOfTheTask.hashCode() : 0);
+        return result;
+    }
 }

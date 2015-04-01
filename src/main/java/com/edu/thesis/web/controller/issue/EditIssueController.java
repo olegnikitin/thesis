@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 @RequestMapping(value = "my/projects/project={pr_id}/issues/edit={is_id}")
 public class EditIssueController {
 
-    private static Logger log = Logger.getLogger(EditIssueController.class.getName());
+    private static final Logger log = Logger.getLogger(EditIssueController.class.getName());
 
     @Autowired
     private IssueService issueService;
@@ -49,7 +49,7 @@ public class EditIssueController {
             return "issue/edit_issue";
         }
         issue.setDateOfModification(new Date());
-        log.info(issue + " was created");
+        log.info(issue + " was edited");
         return "issue/edit_issue";
     }
 }

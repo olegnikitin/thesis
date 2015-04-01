@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * Created by Oleg on 16.01.2015.
@@ -27,6 +28,8 @@ import java.util.Map;
 @Controller
 @RequestMapping(value = "my/projects/project={pr_id}/issues/create")
 public class CreateNewIssueController {
+
+    private static final Logger log = Logger.getLogger(CreateNewIssueController.class.getName());
 
     @Autowired
     private IssueService issueService;
@@ -53,8 +56,9 @@ public class CreateNewIssueController {
         Date date = new Date();
         issue.setDateOfCreation(date);
         issue.setDateOfModification(date);//TODO: Add current user to the task
+        log.info(issue + " was created");
         issueService.createIssue(issue);
-        return "redirect:my//projects/project=" + pr_id + "/issues/edit=" + issue.getId();
+        return "redirect:/my/projects/project=" + pr_id + "/issues/edit=" + issue.getId();
     }
 
 }

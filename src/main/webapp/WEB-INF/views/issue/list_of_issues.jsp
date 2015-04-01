@@ -19,33 +19,34 @@
 <body>
 <h1>List of issues</h1>
 <c:if test="${!empty issueList}">
-<table style="width: 100%" border="1">
-  <tr>
-    <td>nameOfIssue</td>
-    <td>description</td>
-    <td>priority</td>
-    <td>type</td>
-    <td>dateOfCreation</td>
-    <td>dateOfModification</td>
-    <td>statusOfTheTask</td>
-    <td>modifications</td>
-  </tr>
-  <c:forEach items="${issuesList}" var="issue">
+  <table style="width: 100%" border="1">
     <tr>
-      <td>${issue.nameOfIssue}</td>
-      <td>${issue.description}</td>
-      <td>${issue.priority}</td>
-      <td>${issue.type}</td>
-      <td>${issue.dateOfCreation}</td>
-      <td>${issue.dateOfModification}</td>
-      <td>${issue.statusOfTheTask}</td>
-      <td>
-        <a href="issue_edit=${issue.id}">Edit issue</a>
-        <a href="issue_delete=${issue.id}">Delete issue</a>
-      </td>
+      <td>nameOfIssue</td>
+      <td>description</td>
+      <td>priority</td>
+      <td>type</td>
+      <td>dateOfCreation</td>
+      <td>dateOfModification</td>
+      <td>statusOfTheTask</td>
+      <td>modifications</td>
     </tr>
-  </c:forEach>
-</table>
+
+    <tr>
+      <c:forEach items="${issuesList}" var="issue">
+        <td>${issue.nameOfIssue}</td>
+        <td>${issue.description}</td>
+        <td>${issue.priority}</td>
+        <td>${issue.type}</td>
+        <td>${issue.dateOfCreation}</td>
+        <td>${issue.dateOfModification}</td>
+        <td>${issue.statusOfTheTask}</td>
+        <td>
+          <a href="issue_edit=${issue.id}">Edit issue</a>
+          <a href="issue_delete=${issue.id}">Delete issue</a>
+        </td>
+      </c:forEach>
+    </tr>
+  </table>
 </c:if>
 <c:if test="${empty issueList}">
   <h2>There is no issues in the project</h2>

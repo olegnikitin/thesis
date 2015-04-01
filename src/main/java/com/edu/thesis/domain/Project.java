@@ -69,4 +69,36 @@ public class Project implements Serializable{
     public void setDescriptionOfTheProject(String descriptionOfTheProject) {
         this.descriptionOfTheProject = descriptionOfTheProject;
     }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "nameOfTheProject='" + nameOfTheProject + '\'' +
+                ", descriptionOfTheProject='" + descriptionOfTheProject + '\'' +
+                ", leadOfTheProject=" + leadOfTheProject +
+                ", issues=" + issues +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Project project = (Project) o;
+
+        if (id != null ? !id.equals(project.id) : project.id != null) return false;
+        if (nameOfTheProject != null ? !nameOfTheProject.equals(project.nameOfTheProject) : project.nameOfTheProject != null)
+            return false;
+        return !(descriptionOfTheProject != null ? !descriptionOfTheProject.equals(project.descriptionOfTheProject) : project.descriptionOfTheProject != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (nameOfTheProject != null ? nameOfTheProject.hashCode() : 0);
+        result = 31 * result + (descriptionOfTheProject != null ? descriptionOfTheProject.hashCode() : 0);
+        return result;
+    }
 }
