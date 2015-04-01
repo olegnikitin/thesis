@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Not found</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
 <h1>404. Not found</h1>

@@ -13,6 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Projects</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
 <h1>List of projects</h1>

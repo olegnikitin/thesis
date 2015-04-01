@@ -12,6 +12,7 @@
 <html>
 <head>
     <title>Edit user</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
 <div>

@@ -7,6 +7,7 @@
     <session-factory>
         <mapping class="com.edu.thesis.domain.Issue" />
         <mapping class="com.edu.thesis.domain.User" />
+        <mapping class="com.edu.thesis.domain.Project" />
         <mapping class="com.edu.thesis.domain.StoragedFile" />
     </session-factory>
 

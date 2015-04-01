@@ -140,15 +140,13 @@ public class User implements Serializable{
     @Override
     public String toString() {
         return "User{" +
-                "tasks=" + tasks +
-                ", rolesOfTheUser=" + rolesOfTheUser +
-                ", password='" + password + '\'' +
-                ", dateOfRegistration=" + dateOfRegistration +
-                ", email='" + email + '\'' +
-                ", middleName='" + middleName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                "login='" + login + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", login='" + login + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", email='" + email + '\'' +
+                ", dateOfRegistration=" + dateOfRegistration +
+                ", password='" + password + '\'' +
                 '}';
     }
 

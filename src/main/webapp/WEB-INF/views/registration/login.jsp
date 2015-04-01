@@ -12,6 +12,7 @@
 <html>
 <head>
     <title>Login Page</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <style>
     .error {
       padding: 15px;

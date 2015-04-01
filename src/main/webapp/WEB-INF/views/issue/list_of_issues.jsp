@@ -15,6 +15,7 @@
   <meta charset="UTF-8">
   <style><%@include file="../../../resources/style.css" %></style>
   <title>List of issues</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
 <h1>List of issues</h1>

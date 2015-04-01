@@ -75,8 +75,6 @@ public class Project implements Serializable{
         return "Project{" +
                 "nameOfTheProject='" + nameOfTheProject + '\'' +
                 ", descriptionOfTheProject='" + descriptionOfTheProject + '\'' +
-                ", leadOfTheProject=" + leadOfTheProject +
-                ", issues=" + issues +
                 '}';
     }
 

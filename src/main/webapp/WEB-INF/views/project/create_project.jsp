@@ -15,6 +15,7 @@
     <style>
         <%@include file="../../../resources/error.css" %>
     </style>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
 <div>

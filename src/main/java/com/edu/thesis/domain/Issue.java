@@ -157,8 +157,6 @@ public class Issue implements Serializable{
                 ", dateOfCreation=" + dateOfCreation +
                 ", dateOfModification=" + dateOfModification +
                 ", statusOfTheTask=" + statusOfTheTask +
-                ", projectOfTheIssue=" + projectOfTheIssue +
-                ", ownerOfTheTask=" + ownerOfTheTask +
                 '}';
     }
 
