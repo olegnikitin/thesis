@@ -13,12 +13,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.logging.Logger;
 
 /**
  * Created by Oleg on 18.01.2015.
  */
 @Controller
 public class EditUserController {
+
+    private static final Logger log = Logger.getLogger(EditUserController.class.getName());
 
     private Date date = null;
     private String login = null;
@@ -29,6 +32,7 @@ public class EditUserController {
     @RequestMapping(value = "my//users/edit_user={id}", method = RequestMethod.GET)
     public String getToEditUserPage(@PathVariable("id") Long id, Model model){
         User user = userService.getUser(id);
+        log.info(user + " is being editing");
         if(user == null){
             return "errorPages/404";
         }
@@ -46,6 +50,7 @@ public class EditUserController {
         user.setDateOfRegistration(date);
         user.setLogin(login);
         userService.updateUser(user);
+        log.info(user + " was being editing");
         return "edit_user";
     }
 

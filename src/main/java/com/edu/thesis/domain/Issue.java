@@ -14,6 +14,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "issue_of_the_task")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Issue implements Serializable{
 
     @Id

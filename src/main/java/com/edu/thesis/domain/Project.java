@@ -9,6 +9,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "table_project")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Project implements Serializable{
 
     @Id

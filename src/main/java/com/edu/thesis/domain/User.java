@@ -7,6 +7,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -14,6 +15,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "user_of_the_bugtracker")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User implements Serializable{
 
     @Id
@@ -48,14 +50,20 @@ public class User implements Serializable{
     @Size(min=6, max=20, message="The password must be between 6 and 20 characters long.")
     private String password;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
-    private Set<RoleOfTheUser> rolesOfTheUser;
+    private Set<RoleOfTheUser> rolesOfTheUser = getDefaultRoles();
 
     @OneToMany(mappedBy = "ownerOfTheTask")
     private Set<Issue> tasks;
 
     public User() {    }
+
+    public static Set<RoleOfTheUser> getDefaultRoles() {
+        Set<RoleOfTheUser> defaultRoles = new HashSet<>();
+        defaultRoles.add(RoleOfTheUser.ROLE_USER);
+        return defaultRoles;
+    }
 
     public Long getId() {
         return id;
@@ -147,6 +155,7 @@ public class User implements Serializable{
                 ", email='" + email + '\'' +
                 ", dateOfRegistration=" + dateOfRegistration +
                 ", password='" + password + '\'' +
+                ", rolesOfTheUser=" + rolesOfTheUser +
                 '}';
     }
 
