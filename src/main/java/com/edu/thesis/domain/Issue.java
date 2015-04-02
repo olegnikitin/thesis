@@ -47,15 +47,15 @@ public class Issue implements Serializable{
     private StatusOfTheTask statusOfTheTask;
 
     @SuppressWarnings("JpaAttributeTypeInspection")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "project_fk")
     private Project projectOfTheIssue;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "user_fk")
     private User ownerOfTheTask;
 
-    @OneToMany(mappedBy = "issue")
+    @OneToMany(mappedBy = "issue", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<StoragedFile> screenshots;
 
     public Issue() {    }

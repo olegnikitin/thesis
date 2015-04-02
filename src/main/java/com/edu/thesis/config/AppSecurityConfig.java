@@ -28,6 +28,7 @@ import java.util.Arrays;
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 //http://stoflru.org/questions/25388855/spring-security-with-database-authorization-with-java-configuration
 //http://www.mkyong.com/spring-security/spring-security-hello-world-annotation-example/
+//http://devcolibri.com/3810
 
     @Autowired
     private DataSource dataSource;
