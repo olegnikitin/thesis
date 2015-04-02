@@ -1,13 +1,10 @@
 package com.edu.thesis.web.controller.registration;
 
-import com.edu.thesis.domain.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.validation.Valid;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by Oleg on 15.01.2015.
@@ -17,17 +14,16 @@ import javax.validation.Valid;
 public class LoginController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public String loginGetMethod(Model model){
-        model.addAttribute(new User());
-        return "registration/login";
-    }
+    public ModelAndView login(
+            @RequestParam(value = "error", required = false) String error) {
 
-    @RequestMapping(method = RequestMethod.POST)
-    public String loginPostMethod(@Valid User user, BindingResult bindingResult){//TODO: Get a user from base
-        if(bindingResult.hasErrors()){
-            return "registration/login";
+        ModelAndView model = new ModelAndView("registration/login");
+        if (error != null) {
+            model.addObject("error", "ERROR");
         }
-        return "/home";
+
+        return model;
+
     }
 
 }
