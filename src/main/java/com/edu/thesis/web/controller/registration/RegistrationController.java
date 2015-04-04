@@ -39,7 +39,6 @@ public class RegistrationController {
         if (bindingResult.hasErrors()) {
             return "registration/registration";
         }
-        user.setDateOfRegistration(new Date());
         try{
             userService.createUser(user);//TODO: Catch a ERROR SqlExceptionHelper. Very important
             log.info(user + " was created");
@@ -47,6 +46,6 @@ public class RegistrationController {
             log.warning("Failed to create user\n" + e);
             return "registration/registration";
         }
-        return "forward:/my/users/edit_user=" + user.getId();
+        return "redirect:/my/users/edit_user=" + user.getId();//bad idea. security is working
     }
 }

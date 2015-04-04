@@ -3,6 +3,7 @@ package com.edu.thesis.domain;
 import com.edu.thesis.domain.enums.PriorityOfTheTask;
 import com.edu.thesis.domain.enums.StatusOfTheTask;
 import com.edu.thesis.domain.enums.TypeOfTheTask;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,6 +16,7 @@ import java.util.Set;
 @Entity
 @Table(name = "issue_of_the_task")
 @Inheritance(strategy = InheritanceType.JOINED)
+@Document(indexName = "issue")
 public class Issue implements Serializable{
 
     @Id

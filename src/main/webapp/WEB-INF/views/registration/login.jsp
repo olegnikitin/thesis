@@ -49,12 +49,12 @@
 
       <table>
         <tr>
-          <td>${username_label}:</td>
-          <td><input type='text' name='username' value=''
+          <td>Login:</td>
+          <td><input type='text' name='login' value=''
                      class="form-control" placeholder="admin" /></td>
         </tr>
         <tr>
-          <td>${password_label}:</td>
+          <td>Password:</td>
           <td><input type='password' name='password'
                      class="form-control" placeholder="password" /></td>
         </tr>

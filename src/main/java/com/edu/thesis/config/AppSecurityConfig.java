@@ -26,9 +26,6 @@ import java.util.Arrays;
 @EnableWebSecurity
 @Import(DBConfiguration.class)
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
-//http://stoflru.org/questions/25388855/spring-security-with-database-authorization-with-java-configuration
-//http://www.mkyong.com/spring-security/spring-security-hello-world-annotation-example/
-//http://devcolibri.com/3810
 
     @Autowired
     private DataSource dataSource;
@@ -37,9 +34,11 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-                .authoritiesByUsernameQuery("SELECT login, rolesOfTheUser FROM user_of_the_bugtracker WHERE login = ?")
-                .usersByUsernameQuery("SELECT login, password, true FROM user_of_the_bugtracker WHERE login =?")
-                .passwordEncoder(passwordEncoder());
+                .authoritiesByUsernameQuery
+                        ("SELECT u.login, r.rolesOfTheUser FROM user_of_the_bugtracker u " +
+                                "LEFT OUTER JOIN user_rolesoftheuser r ON u.id = r.User_id where u.login = ?")
+                .usersByUsernameQuery("SELECT login, password, true FROM user_of_the_bugtracker WHERE login =?");
+                //.passwordEncoder(passwordEncoder());
     }
 
     @Override
@@ -51,17 +50,21 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .accessDecisionManager(accessDecisionManager())
                 .antMatchers("/my/**").access("hasRole('ROLE_USER')")
-                .and()
+                .and();
+
+        http
                 .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/")
                 .failureUrl("/login?error")
                 .usernameParameter("login")
-                .passwordParameter("password")
-                //.successHandler(authenticationSuccessHandler())
-                .and()
-                .logout()
-                .logoutSuccessUrl("/");
+                .passwordParameter("password");
+
+        http.logout()
+                .permitAll()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login?logout")
+                .invalidateHttpSession(true);
 
     }
 

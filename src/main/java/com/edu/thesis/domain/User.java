@@ -44,7 +44,7 @@ public class User implements Serializable{
     private String email;
 
     @Column(name = "date_of_registration")
-    private Date dateOfRegistration;
+    private Date dateOfRegistration = setDateByRegistration();
 
     @Column
     @Size(min=6, max=20, message="The password must be between 6 and 20 characters long.")
@@ -52,17 +52,21 @@ public class User implements Serializable{
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
-    private Set<RoleOfTheUser> rolesOfTheUser = getDefaultRoles();
+    private Set<RoleOfTheUser> rolesOfTheUser = setDefaultRoles();
 
     @OneToMany(mappedBy = "ownerOfTheTask", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private Set<Issue> tasks;
 
     public User() {    }
 
-    public static Set<RoleOfTheUser> getDefaultRoles() {
+    private static Set<RoleOfTheUser> setDefaultRoles() {
         Set<RoleOfTheUser> defaultRoles = new HashSet<>();
         defaultRoles.add(RoleOfTheUser.ROLE_USER);
         return defaultRoles;
+    }
+
+    private static Date setDateByRegistration(){
+        return new Date();
     }
 
     public Long getId() {

@@ -47,7 +47,6 @@ public class EditUserController {
         if(bindingResult.hasErrors()){
             return "edit_user";
         }
-        user.setDateOfRegistration(date);
         user.setLogin(login);
         userService.updateUser(user);
         log.info(user + " was being editing");
