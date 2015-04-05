@@ -13,7 +13,7 @@
 <html>
 <head lang="en">
   <meta charset="UTF-8">
-  <style><%@include file="../../../resources/style.css" %></style>
+  <style><%@include file="../../../resources/css/style.css" %></style>
   <title>List of issues</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>

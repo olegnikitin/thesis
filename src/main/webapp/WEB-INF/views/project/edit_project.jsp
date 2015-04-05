@@ -13,12 +13,13 @@
 <head>
     <title>Edit project</title>
     <style>
-        <%@include file="../../../resources/error.css" %>
+        <%@include file="../../../resources/css/error.css" %>
     </style>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
 <h2>Edit project</h2>
+<a href="logout" style="text-align:right">Logout</a>
 <form:form method="post" modelAttribute="project">
     <form:errors path="*" cssClass="errorblock" element="div" />
 

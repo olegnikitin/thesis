@@ -16,6 +16,7 @@
 </head>
 <body>
 <div>
+  <a href="/logout" style="text-align:right">Logout</a>
   <h1>Edit your profile</h1>
   <form:form method="post" modelAttribute="user">
     <h2>Your login is <b><form:label path="login"/></b></h2><br/>

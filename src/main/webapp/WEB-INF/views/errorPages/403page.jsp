@@ -12,11 +12,11 @@
 <h1>HTTP Status 403 - Access is denied</h1>
 
 <c:choose>
-  <c:when test="${empty username}">
+  <c:when test="${empty login}">
     <h2>You do not have permission to access this page!</h2>
   </c:when>
   <c:otherwise>
-    <h2>Username : ${username} <br/>
+    <h2>Username : ${login} <br/>
       You do not have permission to access this page!</h2>
   </c:otherwise>
 </c:choose>

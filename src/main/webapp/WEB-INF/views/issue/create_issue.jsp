@@ -13,7 +13,7 @@
 <head>
     <title>Create new issue</title>
     <style>
-        <%@include file="../../../resources/error.css" %>
+        <%@include file="../../../resources/css/error.css" %>
     </style>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
