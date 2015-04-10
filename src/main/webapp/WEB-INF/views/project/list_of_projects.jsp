@@ -17,7 +17,7 @@
 </head>
 <body>
 <h1>List of projects</h1>
-<a href="../logout" style="display: block; text-align:right;">Logout</a>
+<a href="/auth/logout" style="display: block; text-align:right;">Logout</a>
 <c:if test="${!empty projectsList}">
   <table style="width: 100%" border="1">
     <tr style="background-color: gray">
@@ -32,8 +32,8 @@
         <td>${project.descriptionOfTheProject}</td>
         <td>${project.leadOfTheProject.toString}</td>
         <td>
-          <a href="edit=${project.id}">Edit project</a>
-          <a href="delete=${project.id}">Delete project</a>
+          <a href="projects/edit=${project.id}">Edit project</a>
+          <a href="projects/delete=${project.id}">Delete project</a>
         </td>
       </tr>
     </c:forEach>

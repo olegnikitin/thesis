@@ -17,7 +17,7 @@ import org.springframework.security.web.access.expression.WebExpressionVoter;
 
 import javax.sql.DataSource;
 import java.util.Arrays;
-
+import java.util.logging.Logger;
 
 /**
  * Created by Oleg on 15.01.2015.
@@ -26,6 +26,8 @@ import java.util.Arrays;
 @EnableWebSecurity
 @Import(DBConfiguration.class)
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private static final Logger log = Logger.getLogger(AppSecurityConfig.class.getName());
 
     @Autowired
     private DataSource dataSource;
@@ -62,7 +64,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.logout()
                 .permitAll()
-                .logoutUrl("/logout")
+                .logoutUrl("/auth/logout")
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true);
 

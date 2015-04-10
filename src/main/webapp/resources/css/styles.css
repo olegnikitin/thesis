@@ -1,0 +1,18 @@
+.top-marg{
+    margin-top: 1%;
+}
+
+#div_edited{
+    font-family: Open Sans;   
+    font-weight: 400;
+    font-size: 18px;
+}
+
+footer{
+    text-align: center;
+}
+
+.information{
+    text-align: center;
+    margin-bottom: 1%;
+}

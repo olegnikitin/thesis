@@ -20,7 +20,7 @@
 <body>
 <div>
   <h2>Create project</h2>
-    <a href="logout" style="text-align:right">Logout</a>
+    <a href="/auth/logout" style="text-align:right">Logout</a>
   <form:form method="post" modelAttribute="project">
     <form:errors path="*" cssClass="errorblock" element="div" />
 
