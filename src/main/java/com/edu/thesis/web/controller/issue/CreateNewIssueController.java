@@ -6,7 +6,9 @@ import com.edu.thesis.domain.enums.StatusOfTheTask;
 import com.edu.thesis.domain.enums.TypeOfTheTask;
 import com.edu.thesis.service.issueService.IssueService;
 import com.edu.thesis.service.projectService.ProjectService;
+import com.edu.thesis.service.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,7 +28,7 @@ import java.util.logging.Logger;
  * Created by Oleg on 16.01.2015.
  */
 @Controller
-@RequestMapping(value = "my/projects/project={pr_id}/issues/create")
+@RequestMapping(value = "/my/projects/{pr_id}/issues/create")
 public class CreateNewIssueController {
 
     private static final Logger log = Logger.getLogger(CreateNewIssueController.class.getName());
@@ -36,6 +38,9 @@ public class CreateNewIssueController {
 
     @Autowired
     private ProjectService projectService;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String goToCreateNewIssuePage(Map<String, Object> map){
@@ -55,10 +60,11 @@ public class CreateNewIssueController {
         issue.setProjectOfTheIssue(projectService.getProject(pr_id));
         Date date = new Date();
         issue.setDateOfCreation(date);
-        issue.setDateOfModification(date);//TODO: Add current user to the task
-        log.info(issue + " was created");
+        issue.setDateOfModification(date);
+        issue.setOwnerOfTheTask(userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName()));
         issueService.createIssue(issue);
-        return "redirect:/my/projects/project=" + pr_id + "/issues/edit=" + issue.getId();
+        log.info(issue + " was created");
+        return "redirect:/my/projects/" + pr_id + "/issues/" + issue.getId() + "/edit";
     }
 
 }

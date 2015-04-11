@@ -17,7 +17,7 @@ import java.util.Map;
  * Created by Oleg on 19.01.2015.
  */
 @Controller
-@RequestMapping("my/projects/create")
+@RequestMapping("/my/projects/create")
 public class CreateProjectPageController {
 
     @Autowired

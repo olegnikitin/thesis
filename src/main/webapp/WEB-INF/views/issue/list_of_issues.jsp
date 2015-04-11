@@ -15,7 +15,7 @@
   <meta charset="UTF-8">
   <style><%@include file="../../../resources/css/style.css" %></style>
   <title>List of issues</title>
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <h1>List of issues</h1>
@@ -42,8 +42,8 @@
         <td>${issue.dateOfModification}</td>
         <td>${issue.statusOfTheTask}</td>
         <td>
-          <a href="issue_edit=${issue.id}">Edit issue</a>
-          <a href="issue_delete=${issue.id}">Delete issue</a>
+          <a href="/my/projects/${project_id}/issues/${issue.id}/edit">Edit issue</a>
+          <a href="/my/projects/${project_id}/issues/${issue.id}/delete">Delete issue</a>
         </td>
       </c:forEach>
     </tr>
@@ -52,21 +52,5 @@
 <c:if test="${empty issueList}">
   <h2>There is no issues in the project</h2>
 </c:if>
-<!--<div id="header">
-  Bugtracker
-</div>
-<div id="container">
-  <div id="left_column">
-    1
-  </div>
-  <div id="right_column">
-    2
-  </div>
-</div>
-<div id="footer">
-  Developed by
-  <a href="https://www.linkedin.com/in/olegnikitindev">Oleg Nikitin</a><br/>
-  For the university
-</div>-->
 </body>
 </html>

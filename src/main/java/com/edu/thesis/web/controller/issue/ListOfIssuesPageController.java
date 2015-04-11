@@ -18,6 +18,7 @@ import java.util.logging.Logger;
  * Created by Oleg on 16.01.2015.
  */
 @Controller
+@RequestMapping
 public class ListOfIssuesPageController {
 
     private static final Logger log = Logger.getLogger(ListOfIssuesPageController.class.getName());
@@ -28,7 +29,7 @@ public class ListOfIssuesPageController {
     @Autowired
     private ProjectService projectService;
 
-    @RequestMapping(value = "my/projects/project={pr_id}/issues", method = RequestMethod.GET)
+    @RequestMapping(value = "/my/projects/{pr_id}/issues", method = RequestMethod.GET)
     public ModelAndView getMethodToGetListOfBugsPage(@PathVariable("pr_id") Long id){
         Project project = projectService.getProject(id);
         log.info("the project is " + project);
@@ -37,8 +38,16 @@ public class ListOfIssuesPageController {
             mv = new ModelAndView("issue/list_of_issues");
             mv.addObject("issue", new Issue());
             mv.addObject("issueList", project.getIssues());
+            mv.addObject("project_id", project.getId());
         }else mv = new ModelAndView("errorPages/404");
         return mv;
+    }
+
+    @RequestMapping("/my/projects/{project_id}/issues/{issue_id}/delete")
+    public String deleteIssue(@PathVariable Long project_id, @PathVariable Long issue_id){
+        issueService.removeIssue(issue_id);
+        log.info("issue #" + issue_id + " was deleted");
+        return "redirect:/my/projects/" + project_id + "/issues";
     }
 
 }

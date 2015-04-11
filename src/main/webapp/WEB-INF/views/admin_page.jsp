@@ -38,7 +38,7 @@
     <a href="/my/projects/create">Create project</a><br/>
     <a href="/my/projects/project=1/issues/create">Create issue for first project</a><br/>
     <a href="/admin/projects/">List of all projects</a><br/>
-    <a href="/my/projects/project=1/issues">List of issues of first project</a><br/>
+    <a href="/my/projects/1/issues">List of issues of first project</a><br/>
     <br/>
     And change this page
   </div>
