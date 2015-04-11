@@ -52,7 +52,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .accessDecisionManager(accessDecisionManager())
                 .antMatchers("/my/**").access("hasRole('ROLE_USER')")
-                .and();
+                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
 
         http
                 .formLogin()

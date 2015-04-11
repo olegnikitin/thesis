@@ -1,5 +1,3 @@
-<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
-<%@ page import="com.edu.thesis.domain.User" %>
 <%--
   Created by IntelliJ IDEA.
   User: Oleg
@@ -16,7 +14,7 @@
       <ul class="nav nav-tabs">
         <li role="presentation" class="active"><a href="/">Home</a>
         </li>
-        <li role="presentation"><a href="/my/users/edit_user=1">Profile</a><!-- Change it -->
+        <li role="presentation"><a href="/my/">Profile</a>
         </li>
         <li role="presentation">
           <form class="navbar-form" role="search">
@@ -25,6 +23,9 @@
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
           </form>
+        <li role="presentation" class="navbar-right">
+          Привет, %username%
+        </li>
         </li>
         <li role="presentation" class="navbar-right"><a href="/auth/logout">Logout</a>
         </li>

@@ -54,7 +54,7 @@ public class User implements Serializable{
     @Enumerated(EnumType.STRING)
     private Set<RoleOfTheUser> rolesOfTheUser = setDefaultRoles();
 
-    @OneToMany(mappedBy = "ownerOfTheTask", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "ownerOfTheTask", cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Set<Issue> tasks;
 
     public User() {    }
