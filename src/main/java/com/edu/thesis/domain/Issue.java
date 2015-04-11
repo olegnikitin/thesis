@@ -19,6 +19,8 @@ import java.util.Set;
 @Document(indexName = "issue")
 public class Issue implements Serializable{
 
+    private static final long serialVersionUID = 845545621L;
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column

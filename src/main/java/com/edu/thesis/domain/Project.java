@@ -12,6 +12,8 @@ import java.util.Set;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Project implements Serializable{
 
+    private static final long serialVersionUID = 45456754633L;
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column
