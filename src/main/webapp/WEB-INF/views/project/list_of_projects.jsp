@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Projects</title>
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <h1>List of projects</h1>
@@ -24,7 +24,7 @@
       <td>nameOfTheProject</td>
       <td>descriptionOfTheProject</td>
       <td>leadOfTheProject</td>
-      <td>Modifications</td><!-- Make the visibility less. Only admin may do it -->
+      <td>Modifications</td>
     </tr>
     <c:forEach items="${projectsList}" var="project">
       <tr>
@@ -32,8 +32,8 @@
         <td>${project.descriptionOfTheProject}</td>
         <td>${project.leadOfTheProject.toString}</td>
         <td>
-          <a href="projects/edit=${project.id}">Edit project</a>
-          <a href="projects/delete=${project.id}">Delete project</a>
+          <a href="/my/projects/${project.id}/edit">Edit project</a>
+          <a href="/my/projects/${project.id}/delete">Delete project</a>
         </td>
       </tr>
     </c:forEach>

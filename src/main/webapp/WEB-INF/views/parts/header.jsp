@@ -12,10 +12,9 @@
   <nav class="navbar navbar-static-top top-marg">
     <div class="container">
       <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="/">Home</a>
-        </li>
-        <li role="presentation"><a href="/my/">Profile</a>
-        </li>
+        <li role="presentation" class="active"><a href="/">Home</a></li>
+        <li role="presentation"><a href="/my/">Profile</a></li>
+        <li role="presentation"><a href="/admin/">Admin page</a></li>
         <li role="presentation">
           <form class="navbar-form" role="search">
             <div class="form-group">
@@ -23,12 +22,8 @@
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
           </form>
-        <li role="presentation" class="navbar-right">
-          Привет, %username%
         </li>
-        </li>
-        <li role="presentation" class="navbar-right"><a href="/auth/logout">Logout</a>
-        </li>
+        <li role="presentation" class="navbar-right"><a href="/auth/logout">Logout</a></li>
       </ul>
     </div>
   </nav>

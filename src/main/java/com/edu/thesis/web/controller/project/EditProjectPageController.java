@@ -20,7 +20,7 @@ import java.util.Map;
  * Created by Oleg on 06.02.2015.
  */
 @Controller
-@RequestMapping(value = "my/projects/edit={id}")
+@RequestMapping(value = "/my/projects/{id}/edit")
 public class EditProjectPageController {
 
     @Autowired

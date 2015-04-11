@@ -1,0 +1,3 @@
+INSERT INTO `thesis`.`user_of_the_bugtracker` (`id`, `date_of_registration`, `email`, `firstName`, `lastName`, `login`, `middleName`, `password`) VALUES ('1', NULL, NULL, NULL, NULL, 'admin', NULL, 'password');
+INSERT INTO `thesis`.`user_rolesoftheuser` (`User_id`, `rolesOfTheUser`) VALUES ('1', 'ROLE_USER');
+INSERT INTO `thesis`.`user_rolesoftheuser` (`User_id`, `rolesOfTheUser`) VALUES ('1', 'ROLE_ADMIN');

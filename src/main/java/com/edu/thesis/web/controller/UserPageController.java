@@ -33,7 +33,7 @@ public class UserPageController {
         log.info(currentUser + " has gone to his own page");
         mv.addObject("issue", new Issue());
         mv.addObject("userIssues", currentUser.getTasks());
-        log.info("There are such tasks as " + currentUser.getTasks());
+        log.info("There are such tasks as " + currentUser.getTasks() + " on the page");
         mv.addObject("project", new Project());
         mv.addObject("userProjects", this.setOfUserProjects(currentUser));
         return mv;
@@ -44,7 +44,7 @@ public class UserPageController {
         for(Issue issue : user.getTasks()){
             projects.add(issue.getProjectOfTheIssue());
         }
-        log.info(projects + " has been added to page");
+        log.info("There are such projects as " + projects + " on the page");
         return projects;
     }
 

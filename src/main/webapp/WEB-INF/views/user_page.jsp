@@ -15,7 +15,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>Yor page</title>
+  <title>Your page</title>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
   <!-- Bootstrap -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
@@ -29,48 +30,50 @@
   <![endif]-->
 </head>
 <body>
-<%@ include file="parts/header.jsp" %>
+<div class="main">
+  <%@ include file="parts/header.jsp" %>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-      <h3 style="text-align:center">Your projects</h3>
-      <c:if test="${!empty projectsList}">
-        <ul class="nav nav-pills nav-stacked">
-        <c:forEach items="${projectList}" var="project">
-          <li role="presentation"><a href="/my/projects/project/${project.id}">${project.nameOfTheProject}</a></li>
-        </c:forEach>
-        </ul>
-      </c:if>
-      <c:if test="${empty projectsList}">
-        <h3>You don't have projects for now</h3>
-      </c:if>
-    </div>
-    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-      <h3 style="text-align:center">Your issues</h3>
-      <c:if test="${!empty userIssues}">
-        <table class="table">
-          <tr class="info">
-            <td>nameOfIssue</td>
-            <td>description</td>
-          </tr>
-          <c:forEach items="${userIssues}" var="issue">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 blockOfItems">
+        <h3>Your projects</h3>
+        <c:if test="${!empty userProjects}">
+          <ul class="nav nav-pills nav-stacked">
+            <c:forEach items="${userProjects}" var="project">
+              <li role="presentation"><a href="/my/projects/project/${project.id}">${project.nameOfTheProject}</a></li>
+            </c:forEach>
+          </ul>
+        </c:if>
+        <c:if test="${empty userProjects}">
+          <h3>You don't have projects for now</h3>
+        </c:if>
+        <a class="btn btn-default" href="/my/projects/create" role="button">Create new project</a>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blockOfItems">
+        <h3>Your issues</h3>
+        <c:if test="${!empty userIssues}">
+          <table class="table">
             <tr class="info">
-              <td>${issue.nameOfIssue}</td>
-              <td>${issue.description}</td>
+              <td>nameOfIssue</td>
+              <td>description</td>
             </tr>
-          </c:forEach>
-        </table>
-      </c:if>
-      <c:if test="${!empty userIssues}">
-        <h3>You don't have issues for now</h3>
-      </c:if>
+            <c:forEach items="${userIssues}" var="issue">
+              <tr class="info">
+                <td>${issue.nameOfIssue}</td>
+                <td>${issue.description}</td>
+              </tr>
+            </c:forEach>
+          </table>
+        </c:if>
+        <c:if test="${!empty userIssues}">
+          <h3>You don't have issues for now</h3>
+        </c:if>
+      </div>
     </div>
   </div>
+
+  <%@ include file="parts/footer.jsp" %>
 </div>
-
-<%@ include file="parts/footer.jsp" %>
-
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
