@@ -46,6 +46,6 @@ public class RegistrationController {
             log.warning("Failed to create user\n" + e);
             return "registration/registration";
         }
-        return "redirect:/my/users/edit_user=" + user.getId();//bad idea. security is working
+        return "redirect:/my/users/" + user.getId() + "/edit";//bad idea. security is working
     }
 }

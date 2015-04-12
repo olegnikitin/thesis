@@ -9,10 +9,10 @@
 <html>
 <head>
     <title>Not found</title>
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <h1>404. Not found</h1>
-<a href="../../">Home</a>
+<a href="/">Home</a>
 </body>
 </html>

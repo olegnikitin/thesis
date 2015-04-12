@@ -41,7 +41,7 @@
 
     <div class="container-fluid">
         <h2>Create project</h2>
-        <form:form method="post" modelAttribute="project">
+        <form:form method="post" modelAttribute="dto">
             <form:errors path="*" cssClass="errorblock" element="div" />
 
             Enter the name of project <br/>
@@ -50,14 +50,14 @@
             <form:input path="descriptionOfTheProject"/><br/>
             Select the lead of the project<br/>
             <c:if test="${!empty userList}">
-                <select id="leadOfTheProject" class="leadOfTheProject">
+                <select name="leadOfTheProject">
                     <c:forEach items="${userList}" var="user">
                         <option value="${user.id}">${user.firstName} ${user.lastName}</option>
                     </c:forEach>
                 </select>
             </c:if>
             <c:if test="${empty userList}">
-                There is no users <!-- Impossible -->
+                There is no users
             </c:if><br/>
             <form:button>Create</form:button>
         </form:form>

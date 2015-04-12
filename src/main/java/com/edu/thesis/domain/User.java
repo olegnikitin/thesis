@@ -1,6 +1,7 @@
 package com.edu.thesis.domain;
 
 import com.edu.thesis.domain.enums.RoleOfTheUser;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -29,14 +30,17 @@ public class User implements Serializable{
 
     @Column(unique = true)
     @Pattern(regexp="^[a-zA-Z0-9]+$", message="Username must be alphanumeric with no spaces")
+    @NotEmpty
     private String login;
 
     @Column
     @Size(min = 3)
+    @NotEmpty
     private String firstName;
 
     @Column
     @Size(min = 3)
+    @NotEmpty
     private String lastName;
 
     @Column
@@ -45,6 +49,7 @@ public class User implements Serializable{
 
     @Column
     @Pattern(regexp = ".+@.+")
+    @NotEmpty
     private String email;
 
     @Column(name = "date_of_registration")
@@ -52,6 +57,7 @@ public class User implements Serializable{
 
     @Column
     @Size(min=6, max=20, message="The password must be between 6 and 20 characters long.")
+    @NotEmpty
     private String password;
 
     @ElementCollection(fetch = FetchType.EAGER)

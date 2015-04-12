@@ -1,5 +1,6 @@
 package com.edu.thesis.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -23,6 +24,7 @@ public class Project implements Serializable{
     private Long id;
 
     @Column
+    @NotEmpty
     private String nameOfTheProject;
 
     @Column
@@ -31,12 +33,12 @@ public class Project implements Serializable{
     @OneToOne
     private User leadOfTheProject;
 
-    /*@ManyToMany
+    @ManyToMany
     @JoinTable(name="project_user",
             joinColumns = @JoinColumn(name="project_id", referencedColumnName="id"),
             inverseJoinColumns = @JoinColumn(name="user_id", referencedColumnName="id")
     )
-    private Set<User> usersInTheCurrentProject;*/
+    private Set<User> usersInTheCurrentProject;
 
     @OneToMany(mappedBy = "projectOfTheIssue", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Issue> issues;
@@ -81,6 +83,14 @@ public class Project implements Serializable{
 
     public void setDescriptionOfTheProject(String descriptionOfTheProject) {
         this.descriptionOfTheProject = descriptionOfTheProject;
+    }
+
+    public Set<User> getUsersInTheCurrentProject() {
+        return usersInTheCurrentProject;
+    }
+
+    public void setUsersInTheCurrentProject(Set<User> usersInTheCurrentProject) {
+        this.usersInTheCurrentProject = usersInTheCurrentProject;
     }
 
     @Override

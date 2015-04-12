@@ -50,7 +50,7 @@
           <tr>
             <td>${project.nameOfTheProject}</td>
             <td>${project.descriptionOfTheProject}</td>
-            <td>${project.leadOfTheProject.toString}</td>
+            <td>${project.leadOfTheProject.firstName} ${project.leadOfTheProject.lastName}</td>
             <td>
               <a href="/my/projects/${project.id}/edit">Edit project</a>
               <a href="/my/projects/${project.id}/delete">Delete project</a>

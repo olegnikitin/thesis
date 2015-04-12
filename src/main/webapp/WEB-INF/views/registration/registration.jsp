@@ -26,9 +26,14 @@
           <sf:errors path="firstName" cssClass="error" /></td>
       </tr>
       <tr>
-        <th><label for="user_screen_name">Username:</label></th>
+        <th><label for="user_last_name">Last name:</label></th>
+        <td><sf:input path="lastName" size="15" id="user_last_name"/>
+          <sf:errors path="lastName" cssClass="error" /></td>
+      </tr>
+      <tr>
+        <th><label for="user_screen_name">Login:</label></th>
         <td><sf:input path="login" size="15" maxlength="15"
-                      id="user_screen_name"/> <!-- Поле имени пользователя -->
+                      id="user_screen_name"/>
           <small id="username_msg">No spaces, please.</small>
           <sf:errors path="login" cssClass="error" />
         </td>
@@ -45,8 +50,7 @@
       <tr>
         <th><label for="user_email">Email Address:</label></th>
         <td><sf:input path="email" size="30"
-                      id="user_email"/> <!-- Поле электронной почты -->
-          <small>In case you forget something</small>
+                      id="user_email"/>
           <sf:errors path="email" cssClass="error" />
         </td>
       </tr>
