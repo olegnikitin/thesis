@@ -33,10 +33,10 @@
 <div class="main">
   <%@ include file="parts/header.jsp" %>
 
-  <div class="container">
+  <div class="container-fluid">
     <h2>Try this links:</h2>
     <a href="/my/projects/create">Create project</a><br/>
-    <a href="/my/projects/project=1/issues/create">Create issue for first project</a><br/>
+    <a href="/my/projects/1/issues/create">Create issue for first project</a><br/>
     <a href="/admin/projects/">List of all projects</a><br/>
     <a href="/my/projects/1/issues">List of issues of first project</a><br/>
     <br/>
@@ -45,5 +45,10 @@
 
   <%@ include file="parts/footer.jsp" %>
 </div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>
 </html>

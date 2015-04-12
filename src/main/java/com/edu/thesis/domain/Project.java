@@ -1,5 +1,7 @@
 package com.edu.thesis.domain;
 
+import org.springframework.data.elasticsearch.annotations.Document;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -10,6 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name = "table_project")
 @Inheritance(strategy = InheritanceType.JOINED)
+@Document(indexName = "project")
 public class Project implements Serializable{
 
     private static final long serialVersionUID = 45456754633L;
@@ -28,12 +31,12 @@ public class Project implements Serializable{
     @OneToOne
     private User leadOfTheProject;
 
-    @ManyToMany
+    /*@ManyToMany
     @JoinTable(name="project_user",
             joinColumns = @JoinColumn(name="project_id", referencedColumnName="id"),
             inverseJoinColumns = @JoinColumn(name="user_id", referencedColumnName="id")
     )
-    private Set<User> usersInTheCurrentProject;
+    private Set<User> usersInTheCurrentProject;*/
 
     @OneToMany(mappedBy = "projectOfTheIssue", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Issue> issues;
@@ -78,14 +81,6 @@ public class Project implements Serializable{
 
     public void setDescriptionOfTheProject(String descriptionOfTheProject) {
         this.descriptionOfTheProject = descriptionOfTheProject;
-    }
-
-    public Set<User> getUsersInTheCurrentProject() {
-        return usersInTheCurrentProject;
-    }
-
-    public void setUsersInTheCurrentProject(Set<User> usersInTheCurrentProject) {
-        this.usersInTheCurrentProject = usersInTheCurrentProject;
     }
 
     @Override

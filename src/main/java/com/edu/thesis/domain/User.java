@@ -1,6 +1,7 @@
 package com.edu.thesis.domain;
 
 import com.edu.thesis.domain.enums.RoleOfTheUser;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
@@ -16,6 +17,7 @@ import java.util.Set;
 @Entity
 @Table(name = "user_of_the_bugtracker")
 @Inheritance(strategy = InheritanceType.JOINED)
+@Document(indexName = "user")
 public class User implements Serializable{
 
     private static final long serialVersionUID = 4532137696L;

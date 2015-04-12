@@ -35,7 +35,7 @@
   <%@ include file="parts/header.jsp" %>
 
   <div class="information">
-    <div class="container">
+    <div class="container-fluid">
       This application is an open-source bugtracker. The software is provided "as is" with MIT license
     </div>
   </div>
@@ -48,5 +48,4 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>
-
 </html>

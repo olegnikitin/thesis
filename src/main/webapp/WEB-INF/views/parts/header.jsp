@@ -23,6 +23,7 @@
             <button type="submit" class="btn btn-default">Submit</button>
           </form>
         </li>
+        <li role="presentation" class="navbar-right"><a href="/registration">Registration</a></li>
         <li role="presentation" class="navbar-right"><a href="/auth/logout">Logout</a></li>
       </ul>
     </div>
