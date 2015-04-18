@@ -42,19 +42,29 @@
 
         <h2>Edit issue</h2>
         <form:form method="post" modelAttribute="issue">
-            <form:errors path="*" cssClass="errorblock" element="div" />
-
-            Enter the name of issue<br/>
-            <form:input path="nameOfIssue"/><br/>
-            Enter the description<br/>
-            <form:textarea path="description"/><br/>
-            Select the priority<br/>
-            <form:select path="priority" items="${listOfPriorities}" size="1"/><br/>
-            Select the type of the task<br/>
-            <form:select path="type" items="${listOfTypes}" size="1"/><br/>
-            Select the status of the task<br/>
-            <form:select path="statusOfTheTask" items="${listOfStatuses}" size="1"/><br/>
-            <!-- Add a screenshots -->
+            <table>
+                <tr>
+                    <td>Enter the name of issue</td>
+                    <td><input name="nameOfIssue"/></td>
+                </tr>
+                <tr>
+                    <td>Enter the description</td>
+                    <td><form:textarea path="description"/></td>
+                </tr>
+                <tr>
+                    <td>Select the priority</td>
+                    <td><form:select path="priority" items="${listOfPriorities}" size="1"/></td>
+                </tr>
+                <tr>
+                    <td>Select the type of the task</td>
+                    <td><form:select path="type" items="${listOfTypes}" size="1"/></td>
+                </tr>
+                <tr>
+                    <td>Select the status of the task</td>
+                    <td><form:select path="statusOfTheTask" items="${listOfStatuses}" size="1"/></td>
+                </tr>
+                <!-- Add a screenshots -->
+            </table>
             <form:button>Submit</form:button>
         </form:form>
 

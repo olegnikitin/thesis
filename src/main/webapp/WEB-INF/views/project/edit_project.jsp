@@ -41,19 +41,20 @@
 
     <div class="container-fluid">
         <h2>Edit project</h2>
-        <form:form method="post" modelAttribute="project">
+        <form:form method="post" modelAttribute="dto">
             <form:errors path="*" cssClass="errorblock" element="div" />
 
             Enter the name of project <br/>
             <form:input path="nameOfTheProject"/><br/>
             Enter the description of the project<br/>
-            <form:input path="descriptionOfTheProject"/><br/>
+            <input type="text" name="descriptionOfTheProject"/><br/>
             Select the lead of the project<br/>
 
             <c:if test="${!empty userList}">
-                <select id="lead" name="lead">
+                <select name="leadOfTheProject">
                     <c:forEach items="${userList}" var="user">
-                        <option name="${user.login}" <c:if test="${project.id == user.id}">selected</c:if> >${user.firstName} ${user.lastName}</option>
+                        <option name="${user.login}" <c:if test="${project.id == user.id}">selected</c:if> >
+                        ${user.firstName} ${user.lastName}</option>
                     </c:forEach>
                 </select>
 

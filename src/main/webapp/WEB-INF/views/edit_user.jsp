@@ -38,19 +38,32 @@
   <%@ include file="parts/header.jsp" %>
 
   <div class="container-fluid">
-    <h1>Edit your profile</h1>
+    <h1>Edit your profile</h1><br/>
+    <h2>Your login is <b><sec:authentication property="principal.username" /></b></h2><br/>
     <form:form method="post" modelAttribute="user">
-      <h2>Your login is <b><sec:authentication property="principal.username" /></b></h2><br/>
-      Your first name is<br/>
-      <form:input path="firstName"/><form:errors path="firstName" cssClass="error" /><br/>
-      Your middle name is<br/>
-      <form:input path="middleName"/><form:errors path="middleName" cssClass="error" /><br/>
-      Your last name is<br/>
-      <form:input path="lastName"/><form:errors path="lastName" cssClass="error" /><br/>
-      Your email is<br/>
-      <form:input path="email"/><form:errors path="email" cssClass="error" /><br/>
-      Your password is<br/>
-      <form:password path="password"/><form:errors path="password" cssClass="error" /><br/>
+      <form:errors path="*" cssClass="errorblock" element="div" />
+      <table>
+        <tr>
+          <td>Your first name is</td>
+          <td><input name="firstName"/></td>
+        </tr>
+        <tr>
+          <td>Your middle name is</td>
+          <td><input name="middleName" /></td>
+        </tr>
+        <tr>
+          <td>Your last name is</td>
+          <td><input name="lastName" /></td>
+        </tr>
+        <tr>
+          <td>Your email is</td>
+          <td><input name="email" /></td>
+        </tr>
+        <tr>
+          <td>Your password is</td>
+          <td><input name="password" type="password" /></td>
+        </tr>
+      </table>
       <button type="submit">Edit</button>
     </form:form>
   </div>

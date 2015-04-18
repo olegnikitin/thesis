@@ -24,13 +24,14 @@ public class Project implements Serializable{
     private Long id;
 
     @Column
-    @NotEmpty
+    @NotEmpty(message = "Name of the project mustn\'t be empty")
     private String nameOfTheProject;
 
     @Column
     private String descriptionOfTheProject;
 
     @OneToOne
+    @NotEmpty(message = "Lead of the project mustn\'t be empty")
     private User leadOfTheProject;
 
     @ManyToMany

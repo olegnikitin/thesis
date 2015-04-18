@@ -58,9 +58,7 @@ public class CreateNewIssueController {
             return "issue/create_issue";
         }
         issue.setProjectOfTheIssue(projectService.getProject(pr_id));
-        Date date = new Date();
-        issue.setDateOfCreation(date);
-        issue.setDateOfModification(date);
+        issue.setDateOfModification(new Date());
         issue.setOwnerOfTheTask(userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName()));
         issueService.createIssue(issue);
         log.info(issue + " was created");

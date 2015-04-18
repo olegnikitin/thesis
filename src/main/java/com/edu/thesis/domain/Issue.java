@@ -3,6 +3,7 @@ package com.edu.thesis.domain;
 import com.edu.thesis.domain.enums.PriorityOfTheTask;
 import com.edu.thesis.domain.enums.StatusOfTheTask;
 import com.edu.thesis.domain.enums.TypeOfTheTask;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -22,14 +23,16 @@ public class Issue implements Serializable{
     private static final long serialVersionUID = 845545621L;
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Long id;
 
     @Column
+    @NotEmpty(message = "Name of the task mustn\'t be empty")
     private String nameOfIssue;
 
     @Column
+    @NotEmpty(message = "Description mustn\'t be empty")
     private String description;
 
     @Column
@@ -41,7 +44,7 @@ public class Issue implements Serializable{
     private TypeOfTheTask type;
 
     @Column
-    private Date dateOfCreation;
+    private Date dateOfCreation = setDefaultDateOfCreation();
 
     @Column
     private Date dateOfModification;
@@ -59,10 +62,14 @@ public class Issue implements Serializable{
     @JoinColumn(name = "user_fk")
     private User ownerOfTheTask;
 
-    @OneToMany(mappedBy = "issue", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "issue", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<StoragedFile> screenshots;
 
     public Issue() {    }
+
+    private static Date setDefaultDateOfCreation(){
+        return new Date();
+    }
 
     public Long getId() {
         return id;

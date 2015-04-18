@@ -12,15 +12,14 @@
   <nav class="navbar navbar-static-top top-marg">
     <div class="container">
       <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="/">Home</a></li>
-        <li role="presentation"><a href="/my/">Profile</a></li>
-        <li role="presentation"><a href="/admin/">Admin page</a></li>
-        <li role="presentation">
+        <li role="presentation" class="active navbar-left"><a href="/">Home</a></li>
+        <li role="presentation" class="navbar-left"><a href="/my/">Profile</a></li>
+        <li role="presentation" class="navbar-left"><a href="/admin/">Admin page</a></li>
+        <li role="presentation" class="navbar-left">
           <form class="navbar-form" role="search">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
           </form>
         </li>
         <li role="presentation" class="navbar-right"><a href="/registration">Registration</a></li>

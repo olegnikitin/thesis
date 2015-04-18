@@ -23,9 +23,7 @@
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <style><%@include file="../../../resources/css/styles.css" %></style>
-    <style>
-        <%@include file="../../../resources/css/error.css" %>
-    </style>
+    <style><%@include file="../../../resources/css/error.css" %></style>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,22 +42,32 @@
         <form:form method="post" modelAttribute="dto">
             <form:errors path="*" cssClass="errorblock" element="div" />
 
-            Enter the name of project <br/>
-            <form:input path="nameOfTheProject"/><br/>
-            Enter the description of the project<br/>
-            <form:input path="descriptionOfTheProject"/><br/>
-            Select the lead of the project<br/>
-            <c:if test="${!empty userList}">
-                <select name="leadOfTheProject">
-                    <c:forEach items="${userList}" var="user">
-                        <option value="${user.id}">${user.firstName} ${user.lastName}</option>
-                    </c:forEach>
-                </select>
-            </c:if>
-            <c:if test="${empty userList}">
-                There is no users
-            </c:if><br/>
-            <form:button>Create</form:button>
+            <table>
+                <tr>
+                    <td>Enter the name of project</td>
+                    <td><input name="nameOfTheProject"/></td>
+                </tr>
+                <tr>
+                    <td>Enter the description of the project</td>
+                    <td><input type="text" name="descriptionOfTheProject" /></td>
+                </tr>
+                <tr>
+                    <td>Select the lead of the project</td>
+                    <td>
+                        <c:if test="${!empty userList}">
+                            <select name="leadOfTheProject">
+                                <c:forEach items="${userList}" var="user">
+                                    <option value="${user.id}">${user.firstName} ${user.lastName}</option>
+                                </c:forEach>
+                            </select>
+                        </c:if>
+                        <c:if test="${empty userList}">
+                            There are no users
+                        </c:if>
+                    </td>
+                </tr>
+            </table>
+            <button type="submit" value="Create">Create</button>
         </form:form>
     </div>
 

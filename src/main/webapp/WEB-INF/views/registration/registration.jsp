@@ -34,49 +34,34 @@
 
   <%@ include file="../parts/header.jsp" %>
 
-  <div class="container-fluid">
-  <p align="center"><h2>Create a account</h2></p>
-  <sf:form method="POST" modelAttribute="user">
-  <fieldset>
-    <table cellspacing="0">
-      <tr>
-        <th><label for="user_first_name">First name:</label></th>
-        <td><sf:input path="firstName" size="15" id="user_first_name"/>
-          <sf:errors path="firstName" cssClass="error" /></td>
-      </tr>
-      <tr>
-        <th><label for="user_last_name">Last name:</label></th>
-        <td><sf:input path="lastName" size="15" id="user_last_name"/>
-          <sf:errors path="lastName" cssClass="error" /></td>
-      </tr>
-      <tr>
-        <th><label for="user_screen_name">Login:</label></th>
-        <td><sf:input path="login" size="15" maxlength="15"
-                      id="user_screen_name"/>
-          <small id="username_msg">No spaces, please.</small>
-          <sf:errors path="login" cssClass="error" />
-        </td>
-      </tr>
-      <tr>
-        <th><label for="user_password">Password:</label></th>
-        <td><sf:password path="password" size="30"
-                         showPassword="false"
-                         id="user_password"/>
-          <small>6 characters or more (be tricky!)</small>
-          <sf:errors path="password" cssClass="error" />
-        </td>
-      </tr>
-      <tr>
-        <th><label for="user_email">Email Address:</label></th>
-        <td><sf:input path="email" size="30"
-                      id="user_email"/>
-          <sf:errors path="email" cssClass="error" />
-        </td>
-      </tr>
-    </table>
-    <button type="submit">Submit</button>
-  </fieldset>
-  </sf:form>
+  <div class="container-fluid" style="align-content: center">
+    <h2>Create a account</h2>
+    <sf:form method="POST" modelAttribute="user">
+      <sf:errors path="*" cssClass="errorblock" element="div" />
+      <table>
+        <tr>
+          <td>First name:</td>
+          <td><input name="firstName"></td>
+        </tr>
+        <tr>
+          <td>Last name:</td>
+          <td><input name="lastName"></td>
+        </tr>
+        <tr>
+          <td>Login:</td>
+          <td><input name="login"></td>
+        </tr>
+        <tr>
+          <td>Password:</td>
+          <td><input name="password"></td>
+        </tr>
+        <tr>
+          <td>Email:</td>
+          <td><input name="email"></td>
+        </tr>
+      </table>
+      <button type="submit">Submit</button>
+    </sf:form>
   </div>
 
   <%@ include file="../parts/footer.jsp" %>

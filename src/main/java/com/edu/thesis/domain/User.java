@@ -29,42 +29,42 @@ public class User implements Serializable{
     private Long id;
 
     @Column(unique = true)
-    @Pattern(regexp="^[a-zA-Z0-9]+$", message="Username must be alphanumeric with no spaces")
-    @NotEmpty
+    @Pattern(regexp="^[a-zA-Z0-9]+$", message="Login must be alphanumeric with no spaces")
+    @NotEmpty(message = "Login mustn\'t be empty")
     private String login;
 
     @Column
-    @Size(min = 3)
-    @NotEmpty
+    @Size(min = 3, message = "Size of the first name must be min 3 letters")
+    @NotEmpty(message = "First name mustn\'t be empty")
     private String firstName;
 
     @Column
-    @Size(min = 3)
-    @NotEmpty
+    @Size(min = 3, message = "Size of the last name must be min 3 letters")
+    @NotEmpty(message = "Last name mustn\'t be empty")
     private String lastName;
 
     @Column
-    @Size(min = 3)
+    @Size(min = 3, message = "Size of the middle name must be min 3 letters")
     private String middleName;
 
     @Column
-    @Pattern(regexp = ".+@.+")
-    @NotEmpty
+    @Pattern(regexp = ".+@.+", message = "Email isn't valid")
+    @NotEmpty(message = "Size of email mustn\'t be empty")
     private String email;
 
     @Column(name = "date_of_registration")
     private Date dateOfRegistration = setDateByRegistration();
 
     @Column
-    @Size(min=6, max=20, message="The password must be between 6 and 20 characters long.")
-    @NotEmpty
+    @Size(min=6, max=20, message="The password must be between 6 and 20 characters long")
+    @NotEmpty(message = "Size of password mustn\'t be empty")
     private String password;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private Set<RoleOfTheUser> rolesOfTheUser = setDefaultRoles();
 
-    @OneToMany(mappedBy = "ownerOfTheTask", cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "ownerOfTheTask", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private Set<Issue> tasks;
 
     public User() {    }

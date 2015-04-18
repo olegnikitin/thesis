@@ -11,6 +11,8 @@ import java.util.Arrays;
 @Component
 public class ProjectDto {
 
+    private long id;
+
     @NotEmpty
     private String nameOfTheProject;
 
@@ -22,12 +24,28 @@ public class ProjectDto {
 
     private long[] usersInTheCurrentProject;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getNameOfTheProject() {
         return nameOfTheProject;
     }
 
     public void setNameOfTheProject(String nameOfTheProject) {
         this.nameOfTheProject = nameOfTheProject;
+    }
+
+    public String getDescriptionOfTheProject() {
+        return descriptionOfTheProject;
+    }
+
+    public void setDescriptionOfTheProject(String descriptionOfTheProject) {
+        this.descriptionOfTheProject = descriptionOfTheProject;
     }
 
     public long getLeadOfTheProject() {
@@ -44,14 +62,6 @@ public class ProjectDto {
 
     public void setIssues(long[] issues) {
         this.issues = issues;
-    }
-
-    public String getDescriptionOfTheProject() {
-        return descriptionOfTheProject;
-    }
-
-    public void setDescriptionOfTheProject(String descriptionOfTheProject) {
-        this.descriptionOfTheProject = descriptionOfTheProject;
     }
 
     public long[] getUsersInTheCurrentProject() {

@@ -39,6 +39,10 @@ public class UserPageController {
         return mv;
     }
 
+    /**
+     * @param user
+     * @return set of projects where user takes part
+     */
     private Set<Project> setOfUserProjects(User user){
         Set<Project> projects = null;
         for(Issue issue : user.getTasks()){
