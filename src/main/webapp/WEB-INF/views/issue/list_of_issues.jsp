@@ -70,7 +70,7 @@
       </table>
     </c:if>
     <c:if test="${empty issueList}">
-      <h2>There is no issues in the project</h2>
+      <h2>There are no issues in the project</h2>
     </c:if>
 
   </div>

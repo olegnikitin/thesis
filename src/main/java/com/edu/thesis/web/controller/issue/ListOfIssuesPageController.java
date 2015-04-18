@@ -37,7 +37,7 @@ public class ListOfIssuesPageController {
         if(!(project == null)){
             mv = new ModelAndView("issue/list_of_issues");
             mv.addObject("issue", new Issue());
-            mv.addObject("issueList", project.getIssues());
+            mv.addObject("issuesList", project.getIssues());
             mv.addObject("project_id", project.getId());
         }else mv = new ModelAndView("errorPages/404");
         return mv;
