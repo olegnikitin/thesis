@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 public class DatabaseConnectionTest {
 
     @Test
-    public void connectionSetUpTest() {
+    public void connectionDBSetupLocalSettingsTest() {
 
         Connection conn = null;
         Properties connectionProps = new Properties();
