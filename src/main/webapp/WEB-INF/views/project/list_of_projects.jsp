@@ -52,8 +52,12 @@
             <td>${project.descriptionOfTheProject}</td>
             <td>${project.leadOfTheProject.firstName} ${project.leadOfTheProject.lastName}</td>
             <td>
-              <a href="/my/projects/${project.id}/edit">Edit project</a>
-              <a href="/my/projects/${project.id}/delete">Delete project</a>
+              <button type="button" class="btn btn-warning">
+                <a href="/my/projects/${project.id}/edit" class="colorText">Edit project</a>
+              </button>
+              <button type="button" class="btn btn-danger">
+                <a href="/my/projects/${project.id}/delete" class="colorText">Delete project</a>
+              </button>
             </td>
           </tr>
         </c:forEach>

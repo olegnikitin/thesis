@@ -20,3 +20,8 @@ footer{
 .blockOfItems{
     text-align:center
 }
+
+.colorText{
+    text-decoration: none;
+    text-decoration-color: #f5f5f5;
+}
