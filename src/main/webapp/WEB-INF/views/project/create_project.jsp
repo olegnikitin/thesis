@@ -55,11 +55,11 @@
                     <td>Select the lead of the project</td>
                     <td>
                         <c:if test="${!empty userList}">
-                            <select name="leadOfTheProject">
+                            <form:select path="leadOfTheProject">
                                 <c:forEach items="${userList}" var="user">
-                                    <option value="${user.id}">${user.firstName} ${user.lastName}</option>
+                                    <form:option value="${user.id}">${user.firstName} ${user.lastName}</form:option>
                                 </c:forEach>
-                            </select>
+                            </form:select>
                         </c:if>
                         <c:if test="${empty userList}">
                             There are no users

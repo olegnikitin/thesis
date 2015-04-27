@@ -13,11 +13,11 @@ public class UserFactory {
 
     private UserFactory(){}
 
-    public static User getDefaultUser(){
+    public synchronized static User getNewDefaultUser(){
         return new User();
     }
 
-    public static User getNewAdmin(){
+    public synchronized static User getNewAdmin(){
         User user = new User();
         Set<RoleOfTheUser> roles = new HashSet<>();
         roles.add(RoleOfTheUser.ROLE_ADMIN);

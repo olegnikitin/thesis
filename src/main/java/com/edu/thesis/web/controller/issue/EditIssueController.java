@@ -24,7 +24,7 @@ import java.util.logging.Logger;
  * Created by Oleg on 07.02.2015.
  */
 @Controller
-@RequestMapping(value = "/my/projects/{pr_id}/issues/{is_id}/edit")
+@RequestMapping(value = "/my/projects/{pr_id}/issues/{is_id}/update")
 public class EditIssueController {
 
     private static final Logger log = Logger.getLogger(EditIssueController.class.getName());

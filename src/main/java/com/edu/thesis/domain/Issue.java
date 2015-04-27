@@ -62,12 +62,12 @@ public class Issue implements Serializable{
     @JoinColumn(name = "user_fk")
     private User ownerOfTheTask;
 
-    @OneToMany(mappedBy = "issue", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "issue", fetch = FetchType.EAGER, cascade = CascadeType.ALL)//EAGER FOR WHILE. ITS EMPTY
     private Set<StoragedFile> screenshots;
 
     public Issue() {    }
 
-    private static Date setDefaultDateOfCreation(){
+    private synchronized static Date setDefaultDateOfCreation(){
         return new Date();
     }
 

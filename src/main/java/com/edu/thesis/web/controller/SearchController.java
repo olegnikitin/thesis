@@ -1,9 +1,5 @@
 package com.edu.thesis.web.controller;
 
-import com.edu.thesis.dao.elasticsearchDao.ElasticsearchCrudRepository;
-import com.edu.thesis.domain.Issue;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class SearchController {
 
     /*@Autowired
-    private ElasticsearchCrudRepository<Issue, Integer> repository;*/
+    private ElasticsearchIssueDao elasticsearchIssueDao;*/
 
     @RequestMapping(value = "/searchedIssues={issue}", method = RequestMethod.GET)
     public ModelAndView searchIssues(@PathVariable String issue){

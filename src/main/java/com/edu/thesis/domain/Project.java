@@ -19,7 +19,7 @@ public class Project implements Serializable{
     private static final long serialVersionUID = 45456754633L;
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Long id;
 
@@ -31,7 +31,6 @@ public class Project implements Serializable{
     private String descriptionOfTheProject;
 
     @OneToOne
-    @NotEmpty(message = "Lead of the project mustn\'t be empty")
     private User leadOfTheProject;
 
     @ManyToMany
@@ -41,7 +40,7 @@ public class Project implements Serializable{
     )
     private Set<User> usersInTheCurrentProject;
 
-    @OneToMany(mappedBy = "projectOfTheIssue", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "projectOfTheIssue")
     private Set<Issue> issues;
 
     public Project() {    }

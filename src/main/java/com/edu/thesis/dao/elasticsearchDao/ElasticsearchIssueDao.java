@@ -6,7 +6,7 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
 /**
  * Created by Oleg on 02.04.2015.
  */
-public interface ElasticsearchCrudRepository<T, ID extends Integer> extends ElasticsearchRepository<Issue, Integer> {
+public interface ElasticsearchIssueDao extends ElasticsearchRepository<Issue, Long> {
     //TODO: Extend PagingAndSortingRepository<T, ID> if it is necessary
     //https://github.com/spring-projects/spring-data-elasticsearch
     //http://www.elastic.co/guide/en/elasticsearch/client/java-api/current/get.html

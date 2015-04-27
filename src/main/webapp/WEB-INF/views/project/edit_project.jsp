@@ -61,7 +61,7 @@
             </c:if><br/>
 
             <c:if test="${!empty issueList}">
-                <h3>Edit your issues</h3>
+                <h3>Edit the project's issues</h3>
                 <table>
                     <tr>
                         <td>Name of issue</td>
@@ -72,8 +72,9 @@
                         <tr>
                             <td>${issue.nameOfIssue}</td>
                             <td>${issue.description}</td>
-                            <td><a href="issues/update=${issue.id}">Update</a>
-                                <a href="issues/delete=${issue.id}">Delete</a></td>
+                            <td><a href="/my/projects/${dto.id}/issues/${issue.id}/update">Update</a>
+                                <a href="/my/projects/${dto.id}/issues/${issue.id}/delete">Delete</a>
+                            </td>
                         </tr>
                     </c:forEach>
                 </table>

@@ -1,7 +1,12 @@
 package com.edu.thesis.config;
 
+import com.edu.thesis.domain.Issue;
+import com.edu.thesis.domain.Project;
+import com.edu.thesis.domain.StoragedFile;
+import com.edu.thesis.domain.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -60,6 +65,7 @@ public class DBConfiguration {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan("com.edu.thesis.domain");
+        sessionFactory.setAnnotatedClasses(new Class<?>[]{Issue.class, Project.class, User.class, StoragedFile.class});
 
         sessionFactory.setHibernateProperties(additionalProperties());
 
@@ -67,7 +73,7 @@ public class DBConfiguration {
     }
 
     @Bean
-    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
+    public BeanPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 }
