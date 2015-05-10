@@ -32,10 +32,10 @@ public class UserPageController {
         User currentUser = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         log.info(currentUser + " has gone to his own page");
         mv.addObject("issue", new Issue());
-        mv.addObject("userIssues", currentUser.getTasks());
-        log.info("There are such tasks as " + currentUser.getTasks() + " on the page");
+        /*mv.addObject("userIssues", currentUser.getTasks());
+        log.info("There are such tasks as " + currentUser.getTasks() + " on the page");*/
         mv.addObject("project", new Project());
-        mv.addObject("userProjects", this.setOfUserProjects(currentUser));
+        //mv.addObject("userProjects", this.setOfUserProjects(currentUser));
         return mv;
     }
 
@@ -43,13 +43,13 @@ public class UserPageController {
      * @param user
      * @return set of projects where user takes part
      */
-    private Set<Project> setOfUserProjects(User user){
+    /*private Set<Project> setOfUserProjects(User user){
         Set<Project> projects = null;
         for(Issue issue : user.getTasks()){
             projects.add(issue.getProjectOfTheIssue());
         }
         log.info("There are such projects as " + projects + " on the page");
         return projects;
-    }
+    }*/
 
 }

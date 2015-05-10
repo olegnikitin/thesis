@@ -1,14 +1,17 @@
 package com.edu.thesis.domain;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * Created by Oleg on 19.12.2014.
  */
 @Entity
 @Table(name = "storaged_file")
-public class StoragedFile implements Serializable{
+public class StoragedFile implements DomainObject{
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -47,30 +50,19 @@ public class StoragedFile implements Serializable{
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        StoragedFile that = (StoragedFile) o;
-
-        if (issue != null ? !issue.equals(that.issue) : that.issue != null) return false;
-        if (pathToFile != null ? !pathToFile.equals(that.pathToFile) : that.pathToFile != null) return false;
-
-        return true;
+    public boolean equals(Object that) {
+        return EqualsBuilder.reflectionEquals(this, that, new String[]
+                {"id", "issue"});//excluding this fields
     }
 
     @Override
     public int hashCode() {
-        int result = pathToFile != null ? pathToFile.hashCode() : 0;
-        result = 31 * result + (issue != null ? issue.hashCode() : 0);
-        return result;
+        return HashCodeBuilder.reflectionHashCode(this, new String[]
+                {"id", "issue"});//excluding this fields
     }
 
     @Override
     public String toString() {
-        return "StoragedFile{" +
-                "pathToFile='" + pathToFile + '\'' +
-                ", issue=" + issue +
-                '}';
+        return ToStringBuilder.reflectionToString(this);//TODO: Check the realization
     }
 }

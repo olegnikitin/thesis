@@ -1,10 +1,12 @@
 package com.edu.thesis.domain;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -14,7 +16,7 @@ import java.util.Set;
 @Table(name = "table_project")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Document(indexName = "project")
-public class Project implements Serializable{
+public class Project implements DomainObject{
 
     private static final long serialVersionUID = 45456754633L;
 
@@ -23,7 +25,7 @@ public class Project implements Serializable{
     @Column
     private Long id;
 
-    @Column
+    @Column(unique = true)
     @NotEmpty(message = "Name of the project mustn\'t be empty")
     private String nameOfTheProject;
 
@@ -33,15 +35,13 @@ public class Project implements Serializable{
     @OneToOne
     private User leadOfTheProject;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="project_user",
             joinColumns = @JoinColumn(name="project_id", referencedColumnName="id"),
             inverseJoinColumns = @JoinColumn(name="user_id", referencedColumnName="id")
     )
     private Set<User> usersInTheCurrentProject;
-
-    @OneToMany(mappedBy = "projectOfTheIssue")
-    private Set<Issue> issues;
+    //List of issues add to DAO?
 
     public Project() {    }
 
@@ -69,14 +69,6 @@ public class Project implements Serializable{
         this.leadOfTheProject = leadOfTheProject;
     }
 
-    public Set<Issue> getIssues() {
-        return issues;
-    }
-
-    public void setIssues(Set<Issue> issues) {
-        this.issues = issues;
-    }
-
     public String getDescriptionOfTheProject() {
         return descriptionOfTheProject;
     }
@@ -95,31 +87,18 @@ public class Project implements Serializable{
 
     @Override
     public String toString() {
-        return "Project{" +
-                "nameOfTheProject='" + nameOfTheProject + '\'' +
-                ", descriptionOfTheProject='" + descriptionOfTheProject + '\'' +
-                '}';
+        return ToStringBuilder.reflectionToString(this);
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Project project = (Project) o;
-
-        if (id != null ? !id.equals(project.id) : project.id != null) return false;
-        if (nameOfTheProject != null ? !nameOfTheProject.equals(project.nameOfTheProject) : project.nameOfTheProject != null)
-            return false;
-        return !(descriptionOfTheProject != null ? !descriptionOfTheProject.equals(project.descriptionOfTheProject) : project.descriptionOfTheProject != null);
-
+    public boolean equals(Object that) {
+        return EqualsBuilder.reflectionEquals(this, that, new String[]
+                {"id", "leadOfTheProject", "usersInTheCurrentProject"});//excluding this fields
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (nameOfTheProject != null ? nameOfTheProject.hashCode() : 0);
-        result = 31 * result + (descriptionOfTheProject != null ? descriptionOfTheProject.hashCode() : 0);
-        return result;
+        return HashCodeBuilder.reflectionHashCode(this, new String[]
+                {"id", "leadOfTheProject", "usersInTheCurrentProject"});//excluding this fields
     }
 }

@@ -3,6 +3,9 @@ package com.edu.thesis.domain;
 import com.edu.thesis.domain.enums.PriorityOfTheTask;
 import com.edu.thesis.domain.enums.StatusOfTheTask;
 import com.edu.thesis.domain.enums.TypeOfTheTask;
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.elasticsearch.annotations.Document;
 
@@ -18,7 +21,7 @@ import java.util.Set;
 @Table(name = "issue_of_the_task")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Document(indexName = "issue")
-public class Issue implements Serializable{
+public class Issue implements DomainObject{
 
     private static final long serialVersionUID = 845545621L;
 
@@ -53,7 +56,6 @@ public class Issue implements Serializable{
     @Enumerated(EnumType.STRING)
     private StatusOfTheTask statusOfTheTask;
 
-    @SuppressWarnings("JpaAttributeTypeInspection")
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "project_fk")
     private Project projectOfTheIssue;
@@ -62,7 +64,7 @@ public class Issue implements Serializable{
     @JoinColumn(name = "user_fk")
     private User ownerOfTheTask;
 
-    @OneToMany(mappedBy = "issue", fetch = FetchType.EAGER, cascade = CascadeType.ALL)//EAGER FOR WHILE. ITS EMPTY
+    @OneToMany(mappedBy = "issue", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<StoragedFile> screenshots;
 
     public Issue() {    }
@@ -161,47 +163,18 @@ public class Issue implements Serializable{
 
     @Override
     public String toString() {
-        return "Issue{" +
-                "nameOfIssue='" + nameOfIssue + '\'' +
-                ", description='" + description + '\'' +
-                ", priority=" + priority +
-                ", type=" + type +
-                ", dateOfCreation=" + dateOfCreation +
-                ", dateOfModification=" + dateOfModification +
-                ", statusOfTheTask=" + statusOfTheTask +
-                '}';
+        return ToStringBuilder.reflectionToString(this);//TODO: Check the realization
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Issue issue = (Issue) o;
-
-        if (id != null ? !id.equals(issue.id) : issue.id != null) return false;
-        if (nameOfIssue != null ? !nameOfIssue.equals(issue.nameOfIssue) : issue.nameOfIssue != null) return false;
-        if (description != null ? !description.equals(issue.description) : issue.description != null) return false;
-        if (priority != issue.priority) return false;
-        if (type != issue.type) return false;
-        if (dateOfCreation != null ? !dateOfCreation.equals(issue.dateOfCreation) : issue.dateOfCreation != null)
-            return false;
-        if (dateOfModification != null ? !dateOfModification.equals(issue.dateOfModification) : issue.dateOfModification != null)
-            return false;
-        return statusOfTheTask == issue.statusOfTheTask;
-
+    public boolean equals(Object that) {
+        return EqualsBuilder.reflectionEquals(this, that, new String[]
+                {"id", "ownerOfTheTask", "projectOfTheIssue"});//excluding this fields
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (nameOfIssue != null ? nameOfIssue.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (priority != null ? priority.hashCode() : 0);
-        result = 31 * result + (type != null ? type.hashCode() : 0);
-        result = 31 * result + (dateOfCreation != null ? dateOfCreation.hashCode() : 0);
-        result = 31 * result + (dateOfModification != null ? dateOfModification.hashCode() : 0);
-        result = 31 * result + (statusOfTheTask != null ? statusOfTheTask.hashCode() : 0);
-        return result;
+        return HashCodeBuilder.reflectionHashCode(this, new String[]
+                {"id", "ownerOfTheTask", "projectOfTheIssue"});//excluding this fields
     }
 }

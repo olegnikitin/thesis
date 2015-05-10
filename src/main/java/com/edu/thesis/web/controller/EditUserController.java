@@ -47,7 +47,7 @@ public class EditUserController {
         User currentUser = userService.getUser(id);
         user.setLogin(currentUser.getLogin());
         user.setDateOfRegistration(currentUser.getDateOfRegistration());
-        user.setTasks(currentUser.getTasks());
+        //user.setTasks(currentUser.getTasks());
         user.setRolesOfTheUser(currentUser.getRolesOfTheUser());
         userService.updateUser(user);
         log.info(user + " was edited");

@@ -40,7 +40,7 @@
 
     <div class="container-fluid">
         <h2>Create new issue</h2>
-        <form:form method="post" modelAttribute="issue">
+        <form:form method="post" modelAttribute="issue" enctype="multipart/form-data">
             <form:errors path="*" cssClass="errorblock" element="div" />
 
             <table>
@@ -64,7 +64,11 @@
                     <td>Select the status of the task</td>
                     <td><form:select path="statusOfTheTask" items="${listOfStatuses}" size="1"/></td>
                 </tr>
-                <!-- Add a screenshots -->
+                <!-- Adding screenshots/any other files -->
+                <tr>
+                    <td>Add the files that can help to show the issue</td>
+                    <td><input name="file_of_issue" type="file"/></td>
+                </tr>
             </table>
             <form:button>Submit</form:button>
         </form:form>

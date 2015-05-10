@@ -1,6 +1,8 @@
 package com.edu.thesis.dao.issueDao;
 
 import com.edu.thesis.domain.Issue;
+import com.edu.thesis.domain.Project;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,6 +23,17 @@ public class IssueDaoImpl implements IssueDao{
     @Transactional
     public List<Issue> listOfIssues() {
         return (List)sessionFactory.getCurrentSession().createQuery("from Issue").list();
+    }
+
+    /**
+     *
+     * @param id
+     * @return List of issues of the project
+     */
+    public List<Issue> listOfIssuesOfProject(Long id){
+        Query query = sessionFactory.getCurrentSession().createQuery("select u from User u where u.login = :login");
+        //query.setString("login", userName);//TODO; Write this method
+        return query.list();
     }
 
     @Override

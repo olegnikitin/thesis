@@ -47,17 +47,15 @@
             Enter the name of project <br/>
             <form:input path="nameOfTheProject"/><br/>
             Enter the description of the project<br/>
-            <input type="text" name="descriptionOfTheProject"/><br/>
+            <form:input path="descriptionOfTheProject"/><br/>
             Select the lead of the project<br/>
 
             <c:if test="${!empty userList}">
-                <select name="leadOfTheProject">
+                <form:select path="leadOfTheProject">
                     <c:forEach items="${userList}" var="user">
-                        <option name="${user.login}" <c:if test="${project.id == user.id}">selected</c:if> >
-                        ${user.firstName} ${user.lastName}</option>
+                        <option value="${user.id}" <c:if test="user.id == project.leadOfTheProject.id">selected</c:if> >${user.firstName} ${user.lastName}</option>
                     </c:forEach>
-                </select>
-
+                </form:select>
             </c:if><br/>
 
             <c:if test="${!empty issueList}">

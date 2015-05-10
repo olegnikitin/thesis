@@ -50,7 +50,7 @@ public class CreateProjectPageController {
         project.setLeadOfTheProject(userService.getUser(dto.getLeadOfTheProject()));
         projectService.createProject(project);
         log.info(project + " was created");
-        return "redirect:/my/projects/" + project.getId() + "/edit";
+        return "redirect:/my/projects/" + project.getId() + "/update";
     }
 
 }

@@ -24,7 +24,7 @@ import java.util.logging.Logger;
  * Created by Oleg on 06.02.2015.
  */
 @Controller
-@RequestMapping(value = "/my/projects/{id}/edit")
+@RequestMapping(value = "/my/projects/{id}/update")
 public class EditProjectPageController {
 
     private static final Logger log = Logger.getLogger(EditProjectPageController.class.getName());
@@ -47,7 +47,7 @@ public class EditProjectPageController {
         mav.addObject("dto", dto);
         mav.addObject("projectUserList", project.getUsersInTheCurrentProject());
         mav.addObject("userList", userService.listOfUsers());
-        mav.addObject("issueList", project.getIssues());
+        //mav.addObject("issueList", project.getIssues());
         return mav;
     }
 
@@ -78,13 +78,13 @@ public class EditProjectPageController {
         int i = 0;
 
         //Get long[] ids from project.getIssues and setting to dto
-        long[] issuesId = new long[project.getIssues().size()];
+        /*long[] issuesId = new long[project.getIssues().size()];
         iterator = project.getIssues().iterator();
         while (i != project.getIssues().size()){
             issuesId[i] = ((Issue)iterator.next()).getId();
             i++;
         }
-        dto.setIssues(issuesId);
+        dto.setIssues(issuesId);*/
 
         iterator = null; i = 0;//Setting to null
 

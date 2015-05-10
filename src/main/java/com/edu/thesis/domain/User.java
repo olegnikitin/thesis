@@ -1,13 +1,15 @@
 package com.edu.thesis.domain;
 
 import com.edu.thesis.domain.enums.RoleOfTheUser;
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,7 +21,7 @@ import java.util.Set;
 @Table(name = "user_of_the_bugtracker")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Document(indexName = "user")
-public class User implements Serializable{
+public class User implements DomainObject{
 
     private static final long serialVersionUID = 4532137696L;
 
@@ -28,26 +30,28 @@ public class User implements Serializable{
     @Column
     private Long id;
 
-    @Column(unique = true)
-    @Pattern(regexp="^[a-zA-Z0-9]+$", message="Login must be alphanumeric with no spaces")
+    @Column(unique = true, length = 50)
+    @Size(min = 4, max = 50, message = "The size of login must be from 4 to 50 symbols")
+    @Pattern(regexp="^[a-zA-Z0-9]+$", message = "Login must be alphanumeric with no spaces")
     @NotEmpty(message = "Login mustn\'t be empty")
     private String login;
 
-    @Column
-    @Size(min = 3, message = "Size of the first name must be min 3 letters")
+    @Column(length = 50)
+    @Size(min = 3, max = 50, message = "Size of the first name must be between 3 and 50 letters")
     @NotEmpty(message = "First name mustn\'t be empty")
     private String firstName;
 
-    @Column
-    @Size(min = 3, message = "Size of the last name must be min 3 letters")
+    @Column(length = 50)
+    @Size(min = 3, message = "Size of the last name must be between 3 and 50 letters")
     @NotEmpty(message = "Last name mustn\'t be empty")
     private String lastName;
 
-    @Column
-    @Size(min = 3, message = "Size of the middle name must be min 3 letters")
+    @Column(length = 60)
+    @Size(min = 3, max = 60, message = "Size of the middle name must be between 3 and 60 letters")
     private String middleName;
 
-    @Column
+    @Column(length = 100)
+    @Size(min = 5, max = 100, message = "Size of the email must be between 3 and 60 letters")
     @Pattern(regexp = ".+@.+", message = "Email isn't valid")
     @NotEmpty(message = "Size of email mustn\'t be empty")
     private String email;
@@ -56,7 +60,7 @@ public class User implements Serializable{
     private Date dateOfRegistration = setDateByRegistration();
 
     @Column
-    @Size(min=6, max=20, message="The password must be between 6 and 20 characters long")
+    @Size(min=6, max=20, message = "The password must be between 6 and 20 characters long")
     @NotEmpty(message = "Size of password mustn\'t be empty")
     private String password;
 
@@ -64,7 +68,7 @@ public class User implements Serializable{
     @Enumerated(EnumType.STRING)
     private Set<RoleOfTheUser> rolesOfTheUser = setDefaultRoles();
 
-    @OneToMany(mappedBy = "ownerOfTheTask", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "ownerOfTheTask", cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Set<Issue> tasks;
 
     public User() {    }
@@ -161,47 +165,18 @@ public class User implements Serializable{
 
     @Override
     public String toString() {
-        return "User{" +
-                "login='" + login + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", middleName='" + middleName + '\'' +
-                ", email='" + email + '\'' +
-                ", dateOfRegistration=" + dateOfRegistration +
-                ", password='" + password + '\'' +
-                ", rolesOfTheUser=" + rolesOfTheUser +
-                '}';
+        return ToStringBuilder.reflectionToString(this);//TODO: Check the realization
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        if (id != null ? !id.equals(user.id) : user.id != null) return false;
-        if (login != null ? !login.equals(user.login) : user.login != null) return false;
-        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
-        if (middleName != null ? !middleName.equals(user.middleName) : user.middleName != null) return false;
-        if (email != null ? !email.equals(user.email) : user.email != null) return false;
-        if (dateOfRegistration != null ? !dateOfRegistration.equals(user.dateOfRegistration) : user.dateOfRegistration != null)
-            return false;
-        return !(password != null ? !password.equals(user.password) : user.password != null);
-
+    public boolean equals(Object that) {
+        return EqualsBuilder.reflectionEquals(this, that, new String[]
+                {"id"});//excluding this fields
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (login != null ? login.hashCode() : 0);
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (middleName != null ? middleName.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (dateOfRegistration != null ? dateOfRegistration.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        return result;
+        return HashCodeBuilder.reflectionHashCode(this, new String[]
+                {"id"});//excluding this fields
     }
 }

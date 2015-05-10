@@ -63,9 +63,9 @@ public class UserHibernateDaoTest extends AbstractTransactionalJUnit4SpringConte
         User result = (User) session.get(User.class, user.getId());
 
         assertEquals(user, result);
-    }
+    }*/
 
-    @Test
+    /*@Test
     @Ignore
     public void testGetInvalidId() {
         User result = userDao.getUser(-567890L);
@@ -84,20 +84,19 @@ public class UserHibernateDaoTest extends AbstractTransactionalJUnit4SpringConte
         session.evict(user);
         User result = (User) session.get(User.class, user.getId());//!
         assertEquals(result.getFirstName(), newName);
-    }
+    }*/
 
     @Test
     @Ignore
     public void testDelete(){
         //TODO: Dao method delete must return boolean
-    }*/
+    }
 
     /**
      * Showing workability of this class
      * @throws InterruptedException
      */
     @Test
-    //@Ignore
     public void uselessMethod() throws InterruptedException {
         Thread.sleep(1000);
     }
