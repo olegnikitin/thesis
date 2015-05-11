@@ -45,7 +45,7 @@
             <table>
                 <tr>
                     <td>Enter the name of issue</td>
-                    <td><input name="nameOfIssue"/></td>
+                    <td><form:input path="nameOfIssue"/></td>
                 </tr>
                 <tr>
                     <td>Enter the description</td>

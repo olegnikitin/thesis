@@ -68,8 +68,8 @@ public class User implements DomainObject{
     @Enumerated(EnumType.STRING)
     private Set<RoleOfTheUser> rolesOfTheUser = setDefaultRoles();
 
-    @OneToMany(mappedBy = "ownerOfTheTask", cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-    private Set<Issue> tasks;
+    /*@OneToMany(mappedBy = "ownerOfTheTask", cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    private Set<Issue> tasks;*/
 
     public User() {    }
 
@@ -147,13 +147,13 @@ public class User implements DomainObject{
         this.rolesOfTheUser = rolesOfTheUser;
     }
 
-    public Set<Issue> getTasks() {
+    /*public Set<Issue> getTasks() {
         return tasks;
     }
 
     public void setTasks(Set<Issue> tasks) {
         this.tasks = tasks;
-    }
+    }*/
 
     public String getMiddleName() {
         return middleName;

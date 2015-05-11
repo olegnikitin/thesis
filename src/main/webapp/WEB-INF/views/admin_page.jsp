@@ -38,7 +38,6 @@
     <a href="/my/projects/create">Create new project</a><br/>
     <a href="/my/projects/1/issues/create">Create issue for first project</a><br/>
     <a href="/admin/projects/">List of all projects</a><br/>
-    <a href="/my/projects/1/issues">List of issues of first project</a><br/>
     <a href="/rest/projects">Json value of projects</a><br/>
     <br/>
     And change this page

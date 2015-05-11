@@ -30,9 +30,21 @@ public class IssueDaoImpl implements IssueDao{
      * @param id
      * @return List of issues of the project
      */
+    @Override
+    @Transactional
     public List<Issue> listOfIssuesOfProject(Long id){
-        Query query = sessionFactory.getCurrentSession().createQuery("select u from User u where u.login = :login");
-        //query.setString("login", userName);//TODO; Write this method
+        Query query = sessionFactory.getCurrentSession().createQuery
+                ("select i from Issue i where i.projectOfTheIssue = :id");
+        query.setString("id", id.toString());
+        return query.list();
+    }
+
+    @Override
+    @Transactional
+    public List<Issue> listOfIssuesOfUser(Long id){
+        Query query = sessionFactory.getCurrentSession().createQuery
+                ("select i from Issue i where i.ownerOfTheTask = :id");
+        query.setString("id", id.toString());
         return query.list();
     }
 

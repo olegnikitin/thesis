@@ -39,9 +39,9 @@
 
   <div class="container-fluid">
     <h1>List of issues</h1>
-    <c:if test="${!empty issueList}">
+    <c:if test="${!empty issuesList}">
       <table style="width: 100%" border="1">
-        <tr>
+        <tr style="background-color: gray">
           <td>nameOfIssue</td>
           <td>description</td>
           <td>priority</td>
@@ -49,11 +49,13 @@
           <td>dateOfCreation</td>
           <td>dateOfModification</td>
           <td>statusOfTheTask</td>
-          <td>modifications</td>
+          <td>Project</td>
+          <td>Owner</td>
+          <td>Modifications</td>
         </tr>
 
-        <tr>
-          <c:forEach items="${issuesList}" var="issue">
+        <c:forEach items="${issuesList}" var="issue">
+          <tr>
             <td>${issue.nameOfIssue}</td>
             <td>${issue.description}</td>
             <td>${issue.priority}</td>
@@ -61,15 +63,23 @@
             <td>${issue.dateOfCreation}</td>
             <td>${issue.dateOfModification}</td>
             <td>${issue.statusOfTheTask}</td>
+            <!-- Test -->
+            <td>${issue.projectOfTheIssue.nameOfTheProject}</td>
+            <td>${issue.ownerOfTheTask.firstName} ${issue.ownerOfTheTask.lastName}</td>
+            <!-- /Test -->
             <td>
-              <a href="/my/projects/${project_id}/issues/${issue.id}/edit">Edit issue</a>
-              <a href="/my/projects/${project_id}/issues/${issue.id}/delete">Delete issue</a>
+              <button type="button" class="btn btn-warning">
+                <a href="/my/projects/${project_id}/issues/${issue.id}/update" class="colorText">Edit issue</a>
+              </button>
+              <button type="button" class="btn btn-danger">
+                <a href="/my/projects/${project_id}/issues/${issue.id}/delete" class="colorText">Delete issue</a>
+              </button>
             </td>
-          </c:forEach>
-        </tr>
+          </tr>
+        </c:forEach>
       </table>
     </c:if>
-    <c:if test="${empty issueList}">
+    <c:if test="${empty issuesList}">
       <h2>There are no issues in the project</h2>
     </c:if>
 

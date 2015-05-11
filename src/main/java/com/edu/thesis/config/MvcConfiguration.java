@@ -23,6 +23,14 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 		resolver.setSuffix(".jsp");
 		return resolver;
 	}
+
+	/*@Bean
+	MultipartConfigElement multipartConfigElement() {
+		MultipartConfigFactory factory = new MultipartConfigFactory();
+		factory.setMaxFileSize("128KB");
+		factory.setMaxRequestSize("128KB");
+		return factory.createMultipartConfig();
+	}*/
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {

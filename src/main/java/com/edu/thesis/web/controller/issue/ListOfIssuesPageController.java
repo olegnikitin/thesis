@@ -33,11 +33,12 @@ public class ListOfIssuesPageController {
     public ModelAndView getMethodToGetListOfBugsPage(@PathVariable("pr_id") Long id){
         Project project = projectService.getProject(id);
         log.info("the project is " + project);
-        ModelAndView mv = null;
+        ModelAndView mv;
         if(!(project == null)){
             mv = new ModelAndView("issue/list_of_issues");
             mv.addObject("issue", new Issue());
-            //mv.addObject("issuesList", project.getIssues());
+            //mv.addObject("issuesList", project.getIssues());//TODO: Set a Set of issues of the project. Autowire from DAO
+            mv.addObject("issuesList", issueService.listOfIssuesOfProject(id));
             mv.addObject("project_id", project.getId());
         }else mv = new ModelAndView("errorPages/404");
         return mv;

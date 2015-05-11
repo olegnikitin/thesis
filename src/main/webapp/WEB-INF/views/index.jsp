@@ -36,7 +36,8 @@
 
   <div class="information">
     <div class="container-fluid">
-      This application is an open-source bugtracker. The software is provided "as is" with MIT license
+      This application is an open-source bugtracker. The software is provided "as is" with MIT license <br/>
+      If you want you can use <a href="/rest/info">REST API</a> with JSON
     </div>
   </div>
 

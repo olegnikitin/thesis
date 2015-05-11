@@ -21,6 +21,10 @@ public class ProjectServiceImpl implements ProjectService {
         return projectDao.listOfProjects();
     }
 
+    public List<Project> listOfProjectsByUser(Long id){
+        return projectDao.listOfProjectsByUser(id);
+    }
+
     @Override
     public Project getProject(Long id) {
         return projectDao.getProject(id);

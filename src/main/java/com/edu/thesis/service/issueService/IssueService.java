@@ -9,6 +9,8 @@ import java.util.List;
  */
 public interface IssueService {
     public List<Issue> listOfIssues();
+    public List<Issue> listOfIssuesOfProject(Long id);
+    public List<Issue> listOfIssuesOfUser(Long id);
     public Issue getIssue(Long id);
     public void createIssue(Issue issue);
     public void updateIssue(Issue issue);

@@ -22,6 +22,16 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
+    public List<Issue> listOfIssuesOfProject(Long id){
+        return issueDao.listOfIssuesOfProject(id);
+    }
+
+    @Override
+    public List<Issue> listOfIssuesOfUser(Long id){
+        return issueDao.listOfIssuesOfUser(id);
+    }
+
+    @Override
     public Issue getIssue(Long id) {
         return issueDao.getIssue(id);
     }

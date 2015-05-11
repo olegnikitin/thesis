@@ -7,22 +7,26 @@ import com.edu.thesis.domain.enums.TypeOfTheTask;
 import com.edu.thesis.service.issueService.IssueService;
 import com.edu.thesis.service.projectService.ProjectService;
 import com.edu.thesis.service.userService.UserService;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.swing.filechooser.FileSystemView;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLDecoder;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.Map;
 import java.util.logging.Logger;
 
 /**
@@ -47,9 +51,9 @@ public class CreateNewIssueController {
     public ModelAndView goToCreateNewIssuePage(){
         ModelAndView mv = new ModelAndView("issue/create_issue");
         mv.addObject("issue", new Issue());
-        mv.addObject("listOfPriorities", new ArrayList<PriorityOfTheTask>(Arrays.asList(PriorityOfTheTask.values())));
-        mv.addObject("listOfTypes", new ArrayList<TypeOfTheTask>(Arrays.asList(TypeOfTheTask.values())));
-        mv.addObject("listOfStatuses", new ArrayList<StatusOfTheTask>(Arrays.asList(StatusOfTheTask.values())));
+        mv.addObject("listOfPriorities", new ArrayList<>(Arrays.asList(PriorityOfTheTask.values())));
+        mv.addObject("listOfTypes", new ArrayList<>(Arrays.asList(TypeOfTheTask.values())));
+        mv.addObject("listOfStatuses", new ArrayList<>(Arrays.asList(StatusOfTheTask.values())));
         return mv;
     }
 
@@ -78,24 +82,29 @@ public class CreateNewIssueController {
         return mv;
     }
 
-    private void validateFile(MultipartFile file) {
-        /*if(!image.getContentType().equals("image/jpeg")) {
-            throw new ImageUploadException("Only JPG images accepted");
-        }*/
+    private void validateFile(MultipartFile file) throws Exception {
+        if(!file.getContentType().equals("image/jpeg")){
+            throw new Exception("Only JPG images accepted");//TODO: Add new exception for uploaded files
+        }
     }
 
-    /*private void saveFile(String filename, MultipartFile image){
+    private void saveFile(String filename, MultipartFile file){
         try {
-            File file = new File(webRootPath() + "/resources/" + filename);
-            FileUtils.writeByteArrayToFile(file, image.getBytes());//Apache Commons IO //TODO: Download it
+            File writtenFile = new File(webRootPath() + "/resources/" + filename);//May be the problem with dir creation
+            //File file = new File("/resources/" + filename);
+            FileUtils.writeByteArrayToFile(writtenFile, file.getBytes());
         } catch (IOException e) {
             log.warning(e.toString());
         }
-    }*/
+    }
 
-    private String webRootPath(){
-        //TODO: Check the path and return it to method
-        return null;
+    /**
+     * Checking the path and return it to method
+     * @return rootPath
+     */
+    private String webRootPath(){//TODO: Upload it to the resources
+        //FileSystemView is from swing directory. Check another wat
+        return FileSystemView.getFileSystemView().getDefaultDirectory().getAbsolutePath();//Will it work?
     }
 
 }
